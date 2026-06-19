@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demo Automatización IA — Semart Studio</title>
+  <meta name="description" content="Así funciona la automatización para tu negocio. Ve en vivo cómo tus clientes reciben confirmaciones, recordatorios y reseñas automáticas — sin que toques nada." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2304040A'/%3E%3Ctext x='16' y='23' font-family='Arial Black,sans-serif' font-weight='900' font-size='20' fill='%2300D4FF' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .demo-page-hero { padding: 130px 0 60px; border-bottom: 1px solid var(--border); }
+    .demo-back { display: inline-flex; align-items: center; gap: 8px; color: var(--cyan); font-family: 'Space Grotesk', sans-serif; font-size: 0.85rem; font-weight: 600; margin-bottom: 32px; transition: gap 0.3s; }
+    .demo-back:hover { gap: 14px; }
+    .demo-page-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cyan); font-family: 'Space Grotesk', sans-serif; margin-bottom: 16px; }
+    .demo-page-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 7vw, 6rem); color: var(--white); line-height: 1; margin-bottom: 20px; }
+    .demo-page-title em { color: var(--cyan); font-style: normal; }
+    .demo-page-lead { font-size: 1.05rem; color: rgba(255,255,255,0.55); max-width: 640px; line-height: 1.7; }
+
+    /* ---- SCENARIO ---- */
+    .scenario-section { padding: 80px 0; border-bottom: 1px solid var(--border); }
+    .scenario-header { display: flex; align-items: center; gap: 16px; margin-bottom: 12px; }
+    .scenario-badge { padding: 5px 14px; background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.25); border-radius: 4px; font-size: 0.78rem; font-weight: 700; color: var(--cyan); font-family: 'Space Grotesk', sans-serif; letter-spacing: 0.08em; text-transform: uppercase; }
+    .scenario-name { font-size: 0.9rem; color: rgba(255,255,255,0.5); font-family: 'Space Grotesk', sans-serif; }
+    .scenario-layout { display: grid; grid-template-columns: 360px 1fr; gap: 60px; align-items: start; }
+
+    /* Phone mockup large */
+    .phone-large {
+      width: 260px;
+      background: #111827;
+      border-radius: 32px;
+      border: 6px solid #0a0f1a;
+      overflow: hidden;
+      box-shadow: 0 20px 80px rgba(0,0,0,0.8), inset 0 0 0 1px rgba(255,255,255,0.05);
+      position: sticky;
+      top: 90px;
+    }
+    .pl-notch {
+      height: 24px;
+      background: #0a0f1a;
+      border-radius: 0 0 16px 16px;
+      width: 80px;
+      margin: 0 auto;
+    }
+    .pl-wa-head {
+      background: #1B2631;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .pl-back { color: #00AEFF; font-size: 16px; }
+    .pl-av {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: var(--cyan);
+      color: #000;
+      font-size: 14px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .pl-info {}
+    .pl-name { font-size: 13px; color: white; font-weight: 700; line-height: 1.2; }
+    .pl-status { font-size: 11px; color: #76d7c4; }
+    .pl-body {
+      padding: 10px 10px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      background: #0B141A;
+      min-height: 500px;
+    }
+    .pl-day {
+      text-align: center;
+      font-size: 10px;
+      color: rgba(255,255,255,0.3);
+      padding: 4px 0 6px;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+    .pl-msg {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      max-width: 88%;
+    }
+    .pl-msg span {
+      font-size: 12px;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.45;
+      padding: 8px 12px 6px;
+    }
+    .pl-msg em {
+      font-style: normal;
+      font-size: 10px;
+      color: rgba(255,255,255,0.35);
+      font-family: 'Space Grotesk', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .pl-out { align-self: flex-end; }
+    .pl-out span { background: #005C4B; border-radius: 10px 10px 0 10px; }
+    .pl-out em { align-self: flex-end; }
+    .pl-in { align-self: flex-start; }
+    .pl-in span { background: #1F2C34; border-radius: 10px 10px 10px 0; }
+    .auto-badge {
+      display: inline-block;
+      padding: 2px 7px;
+      background: rgba(0,212,255,0.15);
+      border-radius: 3px;
+      font-size: 9px;
+      font-weight: 700;
+      color: var(--cyan);
+      font-family: 'Space Grotesk', sans-serif;
+      margin-left: 4px;
+    }
+    .pl-footer-input {
+      background: #1F2C34;
+      margin: 8px;
+      border-radius: 20px;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .pl-footer-text { flex: 1; font-size: 12px; color: rgba(255,255,255,0.3); font-family: 'DM Sans', sans-serif; }
+    .pl-footer-send { font-size: 16px; }
+
+    /* Right: timeline with explanations */
+    .auto-timeline { display: flex; flex-direction: column; gap: 0; }
+    .at-step {
+      display: flex;
+      gap: 20px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+      opacity: 0;
+      transform: translateX(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .at-step.visible { opacity: 1; transform: translateX(0); }
+    .at-step:first-child { padding-top: 0; }
+    .at-step:last-child { border-bottom: none; }
+    .at-icon-wrap {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: rgba(0,212,255,0.08);
+      border: 1px solid rgba(0,212,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .at-content { flex: 1; }
+    .at-time { font-size: 0.72rem; font-weight: 700; color: var(--cyan); font-family: 'Space Grotesk', sans-serif; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+    .at-title { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+    .at-desc { font-size: 0.87rem; color: rgba(255,255,255,0.5); line-height: 1.65; margin-bottom: 8px; }
+    .at-result {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      background: rgba(0,212,255,0.07);
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--cyan);
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    /* ---- STATS ---- */
+    .auto-stats-section { padding: 80px 0; background: rgba(0,212,255,0.02); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .auto-stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 48px; }
+    .auto-stat-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 28px 24px;
+      text-align: center;
+    }
+    .auto-stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--cyan); line-height: 1; margin-bottom: 8px; }
+    .auto-stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.5; }
+    .auto-stat-label strong { color: var(--white); font-family: 'Space Grotesk', sans-serif; display: block; margin-bottom: 4px; }
+
+    /* ---- WHAT YOU GET ---- */
+    .auto-includes-section { padding: 80px 0; border-bottom: 1px solid var(--border); }
+    .auto-includes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 48px; }
+    .ai-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      transition: var(--t);
+    }
+    .ai-card:hover { border-color: var(--border-h); transform: translateY(-3px); }
+    .ai-card-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+    .ai-card-content h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .ai-card-content p { font-size: 0.86rem; color: rgba(255,255,255,0.5); line-height: 1.6; margin: 0; }
+
+    /* CTA */
+    .demo-cta-box { margin: 80px 0 0; padding: 60px; background: var(--card); border: 1px solid var(--border-h); border-radius: var(--radius); text-align: center; }
+    .demo-cta-box h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 4vw, 3.5rem); color: var(--white); margin-bottom: 16px; }
+    .demo-cta-box h2 em { color: var(--cyan); font-style: normal; }
+    .demo-cta-box p { color: rgba(255,255,255,0.55); font-size: 1rem; max-width: 520px; margin: 0 auto 32px; line-height: 1.7; }
+    .demo-cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    @media (max-width: 1100px) {
+      .scenario-layout { grid-template-columns: 1fr; }
+      .phone-large { position: static; width: 220px; margin: 0 auto; }
+      .auto-stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .auto-includes-grid { grid-template-columns: 1fr; }
+      .auto-stats-grid { grid-template-columns: 1fr 1fr; }
+      .demo-cta-box { padding: 36px 24px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar scrolled" id="navbar">
+    <div class="container nav-inner">
+      <a href="../index.html" class="logo-link">
+        <img src="../img/logo-transparent.png" alt="Semart Studio" class="nav-logo" width="46" height="46" />
+        <span class="nav-logo-label" style="opacity:1;transform:none;">Semart <em>Studio</em></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html#servicios" class="nav-link">Servicios</a></li>
+        <li><a href="../index.html#precios" class="nav-link">Precios</a></li>
+        <li><a href="../index.html#demos" class="nav-link">Demos</a></li>
+        <li><a href="../index.html#faq" class="nav-link">FAQ</a></li>
+        <li><a href="https://calendly.com/semartestudio" class="nav-cta" target="_blank" rel="noopener noreferrer">Reservar llamada</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="demo-page-hero">
+    <div class="container">
+      <a href="../index.html#demos" class="demo-back">← Volver a demostraciones</a>
+      <p class="demo-page-label">Demo interactiva · Automatización IA</p>
+      <h1 class="demo-page-title">Así trabaja<br/><em>tu negocio solo</em></h1>
+      <p class="demo-page-lead">Todo el proceso de captación, confirmación, recordatorio y fidelización funciona en automático. Tú solo ves cómo llegan los clientes y sube la reputación. Sin tocar nada.</p>
+    </div>
+  </header>
+
+  <!-- SCENARIO + PHONE -->
+  <section class="scenario-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="label-tag">Caso real simulado</span>
+        <h2 class="section-title">Clínica Sonrisa:<br/><em>de reserva a reseña en automático</em></h2>
+        <p class="section-sub">Así es el flujo completo para una clínica dental. El mismo sistema funciona para peluquerías, gimnasios, academias y cualquier negocio local.</p>
+      </div>
+
+      <div class="scenario-layout" style="margin-top: 48px;">
+
+        <!-- PHONE con conversación WA completa -->
+        <div>
+          <div class="phone-large">
+            <div class="pl-notch"></div>
+            <div class="pl-wa-head">
+              <div class="pl-back">←</div>
+              <div class="pl-av">CS</div>
+              <div class="pl-info">
+                <div class="pl-name">Clínica Sonrisa</div>
+                <div class="pl-status">en línea</div>
+              </div>
+            </div>
+            <div class="pl-body">
+              <div class="pl-day">Lunes, 21:47</div>
+              <div class="pl-msg pl-out">
+                <span>Hola, ¿tenéis hueco esta semana para revisión?</span>
+                <em>21:47 ✓✓</em>
+              </div>
+              <div class="pl-msg pl-in">
+                <span>¡Hola! Sí, tenemos disponibilidad el miércoles a las 10:30 y el viernes a las 16:00. ¿Cuál te viene mejor? 😊</span>
+                <em>21:47 <span class="auto-badge">Auto</span></em>
+              </div>
+              <div class="pl-msg pl-out">
+                <span>El viernes 16:00 perfecto</span>
+                <em>21:48 ✓✓</em>
+              </div>
+              <div class="pl-msg pl-in">
+                <span>¡Reserva confirmada! 🎉 Viernes a las 16:00h, Dra. García. Te esperamos en C/ Mayor 14. Recibirás recordatorio el día antes.</span>
+                <em>21:48 <span class="auto-badge">Auto</span></em>
+              </div>
+
+              <div class="pl-day">Jueves, 10:00</div>
+              <div class="pl-msg pl-in">
+                <span>⏰ Recordatorio: mañana a las 16:00h tienes tu cita con la Dra. García. Si no puedes venir, avísanos con tiempo 🙏</span>
+                <em>10:00 <span class="auto-badge">Auto</span></em>
+              </div>
+              <div class="pl-msg pl-out">
+                <span>Sí, allí estaré 👍</span>
+                <em>10:14 ✓✓</em>
+              </div>
+
+              <div class="pl-day">Viernes, 17:30</div>
+              <div class="pl-msg pl-in">
+                <span>¡Gracias por tu visita hoy! 🦷 Espero que todo haya ido bien. Si tienes un momento, una reseña en Google nos ayuda muchísimo ⭐</span>
+                <em>17:30 <span class="auto-badge">Auto</span></em>
+              </div>
+              <div class="pl-msg pl-out">
+                <span>Encantada, ahora mismo dejo la reseña</span>
+                <em>17:45 ✓✓</em>
+              </div>
+            </div>
+            <div class="pl-footer-input">
+              <span class="pl-footer-text">Escribe un mensaje...</span>
+              <span class="pl-footer-send">🎤</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- TIMELINE EXPLANATION -->
+        <div class="auto-timeline" id="autoTimeline">
+          <div class="at-step">
+            <div class="at-icon-wrap">📥</div>
+            <div class="at-content">
+              <div class="at-time">Lunes 21:47 · Instantáneo</div>
+              <h3 class="at-title">El cliente escribe fuera de horario</h3>
+              <p class="at-desc">Son las 21:47. La clínica está cerrada. Sin automatización, ese mensaje queda sin respuesta hasta el día siguiente — y para entonces, el cliente ya reservó en otra clínica.</p>
+              <p class="at-desc">Con la automatización, en menos de 30 segundos recibe los huecos disponibles, elige y confirma. <strong style="color:var(--white);">Sin que nadie intervenga.</strong></p>
+              <span class="at-result">✓ Cero clientes perdidos por tiempo de respuesta</span>
+            </div>
+          </div>
+          <div class="at-step">
+            <div class="at-icon-wrap">✅</div>
+            <div class="at-content">
+              <div class="at-time">Lunes 21:48 · 60 segundos después</div>
+              <h3 class="at-title">Confirmación personalizada automática</h3>
+              <p class="at-desc">El sistema envía la confirmación con todos los detalles: nombre del profesional, dirección, hora exacta. El cliente se queda tranquilo y la clínica no ha hecho nada.</p>
+              <p class="at-desc">El mensaje parece escrito por una persona — porque está redactado con la voz de tu negocio.</p>
+              <span class="at-result">✓ Cada reserva confirmada en segundos</span>
+            </div>
+          </div>
+          <div class="at-step">
+            <div class="at-icon-wrap">⏰</div>
+            <div class="at-content">
+              <div class="at-time">Jueves 10:00 · Recordatorio automático</div>
+              <h3 class="at-title">El día antes: recordatorio inteligente</h3>
+              <p class="at-desc">24h antes de la cita, el cliente recibe un recordatorio amigable. Esto reduce las cancelaciones de último momento hasta un <strong style="color:var(--white);">60%</strong> — un problema enorme para cualquier negocio basado en citas.</p>
+              <p class="at-desc">Si el cliente tiene que cancelar, lo hace con tiempo suficiente para rellenar el hueco.</p>
+              <span class="at-result">↓ 60% menos cancelaciones de último momento</span>
+            </div>
+          </div>
+          <div class="at-step">
+            <div class="at-icon-wrap">⭐</div>
+            <div class="at-content">
+              <div class="at-time">Viernes 17:30 · 90 min después de la cita</div>
+              <h3 class="at-title">Solicitud de reseña en el momento perfecto</h3>
+              <p class="at-desc">El momento en que un cliente está más satisfecho es justo después de la visita. El sistema lo aprovecha enviando un mensaje natural pidiendo una reseña en Google.</p>
+              <p class="at-desc">El resultado: más reseñas, mejor puntuación, más clientes nuevos. Un círculo virtuoso completamente automático.</p>
+              <span class="at-result">↑ Reputación Google en piloto automático</span>
+            </div>
+          </div>
+          <div class="at-step">
+            <div class="at-icon-wrap">🔄</div>
+            <div class="at-content">
+              <div class="at-time">45 días después · Reactivación</div>
+              <h3 class="at-title">Clientes inactivos que vuelven solos</h3>
+              <p class="at-desc">Si un cliente no ha vuelto en 45 días, el sistema le envía un mensaje personalizado recordándole que es hora de su próxima revisión o recordándole que te echa de menos.</p>
+              <p class="at-desc">Esta secuencia recupera entre el <strong style="color:var(--white);">10% y el 25%</strong> de clientes inactivos. Sin llamadas, sin esfuerzo.</p>
+              <span class="at-result">↑ 10–25% de clientes recuperados</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="auto-stats-section">
+    <div class="container">
+      <div class="section-header section-header-center">
+        <span class="label-tag">Resultados</span>
+        <h2 class="section-title">Lo que cambia<br/><em>en tu negocio</em></h2>
+      </div>
+      <div class="auto-stats-grid">
+        <div class="auto-stat-card reveal">
+          <div class="auto-stat-num">10h</div>
+          <div class="auto-stat-label"><strong>Por semana</strong> de tareas repetitivas que tu equipo deja de hacer</div>
+        </div>
+        <div class="auto-stat-card reveal">
+          <div class="auto-stat-num">60%</div>
+          <div class="auto-stat-label"><strong>Reducción</strong> de cancelaciones de último momento</div>
+        </div>
+        <div class="auto-stat-card reveal">
+          <div class="auto-stat-num">98%</div>
+          <div class="auto-stat-label"><strong>Tasa de apertura</strong> de mensajes WhatsApp vs 20% del email</div>
+        </div>
+        <div class="auto-stat-card reveal">
+          <div class="auto-stat-num">30s</div>
+          <div class="auto-stat-label"><strong>Tiempo de respuesta</strong> al cliente, incluso a las 3 de la madrugada</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT YOU GET -->
+  <section class="auto-includes-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="label-tag">Qué incluye</span>
+        <h2 class="section-title">Todo lo que automatizamos<br/><em>para ti</em></h2>
+        <p class="section-sub">Elige las automatizaciones que más sentido tienen para tu negocio. Puedes empezar con una y añadir más.</p>
+      </div>
+      <div class="auto-includes-grid">
+        <div class="ai-card reveal">
+          <div class="ai-card-icon">⚡</div>
+          <div class="ai-card-content">
+            <h4>Respuesta inmediata 24h</h4>
+            <p>Cualquier consulta recibe respuesta en segundos, incluso a medianoche. Horarios, precios, disponibilidad — todo respondido de forma automática y personalizada.</p>
+          </div>
+        </div>
+        <div class="ai-card reveal">
+          <div class="ai-card-icon">📅</div>
+          <div class="ai-card-content">
+            <h4>Confirmación de reserva automática</h4>
+            <p>En el momento en que el cliente reserva, recibe confirmación con todos los detalles. Sin que nadie tenga que escribir nada.</p>
+          </div>
+        </div>
+        <div class="ai-card reveal">
+          <div class="ai-card-icon">🔔</div>
+          <div class="ai-card-content">
+            <h4>Recordatorios inteligentes</h4>
+            <p>24h y 2h antes de la cita. El cliente confirma o cancela con tiempo suficiente para que rellenes el hueco. Adiós a las citas fantasma.</p>
+          </div>
+        </div>
+        <div class="ai-card reveal">
+          <div class="ai-card-icon">⭐</div>
+          <div class="ai-card-content">
+            <h4>Solicitud de reseña automática</h4>
+            <p>90 minutos después de la visita, cuando el cliente está más satisfecho, recibe un mensaje natural pidiendo su opinión en Google. Sin vergüenza, sin olvidarte de pedirlo.</p>
+          </div>
+        </div>
+        <div class="ai-card reveal">
+          <div class="ai-card-icon">🔄</div>
+          <div class="ai-card-content">
+            <h4>Reactivación de clientes dormidos</h4>
+            <p>Detectamos clientes que llevan X días sin volver y les enviamos un mensaje personalizado. El mejor momento para recuperar a alguien que ya confió en ti.</p>
+          </div>
+        </div>
+        <div class="ai-card reveal">
+          <div class="ai-card-icon">📊</div>
+          <div class="ai-card-content">
+            <h4>Seguimiento de leads sin convertir</h4>
+            <p>Alguien preguntó pero no reservó. El sistema hace un seguimiento suave a las 24h y 3 días. Recuperas clientes que se quedaron a mitad del camino.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="padding: 0 0 100px;">
+    <div class="container">
+      <div class="demo-cta-box">
+        <h2>¿Quieres esto para<br/><em>tu negocio?</em></h2>
+        <p>En 1–2 semanas tienes las automatizaciones funcionando. En la llamada te explico exactamente cuáles tienen más impacto para tu tipo de negocio.</p>
+        <div class="demo-cta-btns">
+          <a href="https://calendly.com/semartestudio" class="btn-cta-cal" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Reservar llamada gratuita
+          </a>
+          <a href="https://wa.me/34XXXXXXXXX?text=Hola%20Sergio%2C%20me%20interesan%20las%20automatizaciones" class="btn-cta-wa" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp directo
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-bottom">
+      <div class="footer-bottom-inner" style="padding: 24px 0;">
+        <p>© 2025 Semart Studio · <a href="../index.html" style="color:var(--cyan);">Volver al inicio</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/34XXXXXXXXX?text=Hola%20Sergio%2C%20me%20interesa%20saber%20m%C3%A1s" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span class="wa-tooltip">¡Escríbeme!</span>
+  </a>
+
+  <script>
+    document.getElementById('hamburger').addEventListener('click', function() {
+      this.classList.toggle('open');
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+    const steps = document.querySelectorAll('.at-step');
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 100);
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    steps.forEach(s => obs.observe(s));
+    document.querySelectorAll('.reveal').forEach(el => {
+      new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+      }, { threshold: 0.1 }).observe(el);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demo Web Profesional — Semart Studio</title>
+  <meta name="description" content="Así quedaría tu web profesional. Diseño a medida, optimizado para Google, perfecto en móvil y listo para captar clientes desde el primer día." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2304040A'/%3E%3Ctext x='16' y='23' font-family='Arial Black,sans-serif' font-weight='900' font-size='20' fill='%2300D4FF' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .demo-page-hero { padding: 130px 0 60px; border-bottom: 1px solid var(--border); }
+    .demo-back { display: inline-flex; align-items: center; gap: 8px; color: var(--cyan); font-family: 'Space Grotesk', sans-serif; font-size: 0.85rem; font-weight: 600; margin-bottom: 32px; transition: gap 0.3s; }
+    .demo-back:hover { gap: 14px; }
+    .demo-page-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cyan); font-family: 'Space Grotesk', sans-serif; margin-bottom: 16px; }
+    .demo-page-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 7vw, 6rem); color: var(--white); line-height: 1; margin-bottom: 20px; }
+    .demo-page-title em { color: var(--cyan); font-style: normal; }
+    .demo-page-lead { font-size: 1.05rem; color: rgba(255,255,255,0.55); max-width: 640px; line-height: 1.7; margin-bottom: 0; }
+
+    /* ---- LIVE MOCKUP SECTION ---- */
+    .web-demo-section { padding: 80px 0; border-bottom: 1px solid var(--border); }
+    .web-demo-layout { display: grid; grid-template-columns: 1fr 380px; gap: 60px; align-items: start; }
+    .web-mockup-big {
+      background: #f5f5f7;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.07);
+      position: sticky;
+      top: 90px;
+    }
+    .wmb-topbar {
+      background: #e0e0e0;
+      padding: 8px 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .wmb-dots { display: flex; gap: 5px; }
+    .wmb-dots i { display: block; width: 9px; height: 9px; border-radius: 50%; }
+    .wmb-dots i:nth-child(1) { background: #ff5f57; }
+    .wmb-dots i:nth-child(2) { background: #febc2e; }
+    .wmb-dots i:nth-child(3) { background: #28c840; }
+    .wmb-url {
+      flex: 1;
+      background: white;
+      border-radius: 5px;
+      padding: 4px 12px;
+      font-size: 12px;
+      color: #444;
+      font-family: 'Space Grotesk', sans-serif;
+      text-align: center;
+    }
+    /* Nav */
+    .wmb-nav {
+      background: #04040A;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .wmb-logo { font-family: 'Bebas Neue', sans-serif; font-size: 18px; color: white; letter-spacing: 0.05em; }
+    .wmb-logo em { color: var(--cyan); font-style: normal; }
+    .wmb-nav-links { display: flex; gap: 18px; margin-left: auto; }
+    .wmb-nav-links span { font-size: 11px; color: rgba(255,255,255,0.6); font-family: 'Space Grotesk', sans-serif; }
+    .wmb-nav-cta { background: var(--cyan); color: #000; font-size: 11px; font-weight: 700; padding: 6px 14px; border-radius: 4px; font-family: 'Space Grotesk', sans-serif; }
+    /* Hero */
+    .wmb-hero {
+      background: linear-gradient(135deg, #04040A 0%, #010d18 60%, #001a20 100%);
+      padding: 40px 24px 32px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: center;
+    }
+    .wmb-hero-tag { font-size: 10px; color: var(--cyan); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px; font-family: 'Space Grotesk', sans-serif; }
+    .wmb-hero-h1 { font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: white; line-height: 1.05; margin-bottom: 8px; }
+    .wmb-hero-h1 em { color: var(--cyan); font-style: normal; }
+    .wmb-hero-p { font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.6; margin-bottom: 18px; max-width: 320px; }
+    .wmb-hero-btns { display: flex; gap: 10px; margin-bottom: 18px; }
+    .wmb-btn-main { background: var(--cyan); color: #000; font-size: 12px; font-weight: 700; padding: 8px 18px; border-radius: 4px; font-family: 'Space Grotesk', sans-serif; }
+    .wmb-btn-ghost { border: 1px solid rgba(255,255,255,0.25); color: white; font-size: 12px; padding: 8px 16px; border-radius: 4px; font-family: 'Space Grotesk', sans-serif; }
+    .wmb-rating { display: flex; align-items: center; gap: 6px; font-size: 11px; color: rgba(255,255,255,0.45); font-family: 'Space Grotesk', sans-serif; }
+    .wmb-rating-stars { color: #FFD700; letter-spacing: -2px; font-size: 12px; }
+    .wmb-hero-img {
+      width: 100px; height: 130px;
+      background: linear-gradient(160deg, #1a1a2e, #0a0a16);
+      border-radius: 10px;
+      border: 1px solid rgba(0,212,255,0.15);
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .wmb-hero-img::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(0deg, rgba(0,212,255,0.04) 0px, rgba(0,212,255,0.04) 1px, transparent 1px, transparent 20px);
+    }
+    .wmb-hero-img::after {
+      content: '📸';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 28px;
+      opacity: 0.3;
+    }
+    /* Services */
+    .wmb-services {
+      background: #f0f0f2;
+      padding: 24px;
+    }
+    .wmb-svc-title { font-size: 13px; font-weight: 700; color: #111; text-align: center; margin-bottom: 16px; font-family: 'Space Grotesk', sans-serif; }
+    .wmb-svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .wmb-svc-card {
+      background: white;
+      border-radius: 8px;
+      padding: 14px 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .wmb-svc-card.featured { border-top: 3px solid var(--cyan); }
+    .wmb-svc-icon { font-size: 20px; margin-bottom: 8px; }
+    .wmb-svc-name { font-size: 11px; font-weight: 700; color: #111; margin-bottom: 4px; font-family: 'Space Grotesk', sans-serif; }
+    .wmb-svc-desc { font-size: 10px; color: #666; line-height: 1.4; }
+    /* Contact */
+    .wmb-contact {
+      background: #04040A;
+      padding: 20px 24px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 20px;
+    }
+    .wmb-contact-text { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: white; }
+    .wmb-contact-text em { color: var(--cyan); font-style: normal; }
+    .wmb-contact-btn { background: var(--cyan); color: #000; font-size: 11px; font-weight: 700; padding: 10px 18px; border-radius: 4px; font-family: 'Space Grotesk', sans-serif; white-space: nowrap; }
+    /* WA badge */
+    .wmb-wa {
+      position: absolute;
+      bottom: 12px; right: 12px;
+      width: 36px; height: 36px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      box-shadow: 0 4px 16px rgba(37,211,102,0.5);
+    }
+
+    /* ---- FEATURES COLUMN ---- */
+    .web-features-col { display: flex; flex-direction: column; gap: 0; }
+    .web-feat-item {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+      cursor: default;
+    }
+    .web-feat-item:first-child { padding-top: 0; }
+    .web-feat-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      font-family: 'Space Grotesk', sans-serif;
+      margin-bottom: 8px;
+    }
+    .web-feat-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--white); margin-bottom: 8px; }
+    .web-feat-desc { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .web-feat-result {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+      padding: 5px 12px;
+      background: rgba(0,212,255,0.08);
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--cyan);
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    /* ---- WHAT'S INCLUDED ---- */
+    .web-includes-section { padding: 80px 0; border-bottom: 1px solid var(--border); }
+    .web-includes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+    .wi-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 24px;
+      transition: var(--t);
+    }
+    .wi-card:hover { border-color: var(--border-h); transform: translateY(-4px); }
+    .wi-icon { font-size: 28px; margin-bottom: 14px; }
+    .wi-title { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .wi-desc { font-size: 0.87rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+    /* ---- HOW IT SELLS ---- */
+    .sells-section { padding: 80px 0; background: rgba(0,212,255,0.03); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .sells-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-top: 48px; }
+    .sells-steps { display: flex; flex-direction: column; gap: 0; }
+    .sells-step {
+      display: flex;
+      gap: 20px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .sells-step:last-child { border-bottom: none; }
+    .sells-num {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: rgba(0,212,255,0.1);
+      border: 1px solid rgba(0,212,255,0.25);
+      color: var(--cyan);
+      font-size: 0.85rem;
+      font-weight: 700;
+      font-family: 'Space Grotesk', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .sells-text h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+    .sells-text p { font-size: 0.86rem; color: rgba(255,255,255,0.5); line-height: 1.6; margin: 0; }
+    .sells-right { display: flex; flex-direction: column; gap: 16px; }
+    .sells-stat {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 20px 22px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .sells-stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.8rem; color: var(--cyan); line-height: 1; }
+    .sells-stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.55); line-height: 1.4; }
+    .sells-stat-label strong { color: var(--white); display: block; font-family: 'Space Grotesk', sans-serif; }
+
+    /* ---- CTA ---- */
+    .demo-cta-box { margin: 80px 0 0; padding: 60px; background: var(--card); border: 1px solid var(--border-h); border-radius: var(--radius); text-align: center; }
+    .demo-cta-box h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 4vw, 3.5rem); color: var(--white); margin-bottom: 16px; }
+    .demo-cta-box h2 em { color: var(--cyan); font-style: normal; }
+    .demo-cta-box p { color: rgba(255,255,255,0.55); font-size: 1rem; max-width: 520px; margin: 0 auto 32px; line-height: 1.7; }
+    .demo-cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    @media (max-width: 1100px) {
+      .web-demo-layout { grid-template-columns: 1fr; }
+      .web-mockup-big { position: static; }
+      .web-includes-grid { grid-template-columns: repeat(2, 1fr); }
+      .sells-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .web-includes-grid { grid-template-columns: 1fr; }
+      .wmb-svc-grid { grid-template-columns: 1fr; }
+      .wmb-hero { grid-template-columns: 1fr; }
+      .wmb-hero-img { display: none; }
+      .demo-cta-box { padding: 36px 24px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar scrolled" id="navbar">
+    <div class="container nav-inner">
+      <a href="../index.html" class="logo-link">
+        <img src="../img/logo-transparent.png" alt="Semart Studio" class="nav-logo" width="46" height="46" />
+        <span class="nav-logo-label" style="opacity:1;transform:none;">Semart <em>Studio</em></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html#servicios" class="nav-link">Servicios</a></li>
+        <li><a href="../index.html#precios" class="nav-link">Precios</a></li>
+        <li><a href="../index.html#demos" class="nav-link">Demos</a></li>
+        <li><a href="../index.html#faq" class="nav-link">FAQ</a></li>
+        <li><a href="https://calendly.com/semartestudio" class="nav-cta" target="_blank" rel="noopener noreferrer">Reservar llamada</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="demo-page-hero">
+    <div class="container">
+      <a href="../index.html#demos" class="demo-back">← Volver a demostraciones</a>
+      <p class="demo-page-label">Demo interactiva · Web Profesional</p>
+      <h1 class="demo-page-title">Así quedaría<br/><em>tu web</em></h1>
+      <p class="demo-page-lead">Un sitio web profesional no es solo un escaparate bonito. Es tu mejor vendedor: trabaja las 24 horas, posiciona tu negocio en Google y convierte visitas en clientes reales.</p>
+    </div>
+  </header>
+
+  <!-- LIVE MOCKUP -->
+  <section class="web-demo-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="label-tag">Mockup en vivo</span>
+        <h2 class="section-title">Así se vería<br/><em>tu web real</em></h2>
+        <p class="section-sub">Este es un ejemplo de cómo diseñamos las webs. Cada elemento está pensado para convertir visitas en clientes.</p>
+      </div>
+
+      <div class="web-demo-layout" style="margin-top: 48px;">
+
+        <!-- MOCKUP -->
+        <div class="web-mockup-big" aria-label="Vista previa de web profesional">
+          <div class="wmb-topbar">
+            <div class="wmb-dots"><i></i><i></i><i></i></div>
+            <div class="wmb-url">🔒 tunegocio.com</div>
+          </div>
+          <div class="wmb-nav">
+            <div class="wmb-logo">Tu<em>Negocio</em></div>
+            <div class="wmb-nav-links">
+              <span>Servicios</span>
+              <span>Sobre mí</span>
+              <span>Precios</span>
+              <span>Contacto</span>
+            </div>
+            <div class="wmb-nav-cta">Reservar cita</div>
+          </div>
+          <div class="wmb-hero" style="position:relative;">
+            <div class="wmb-hero-left">
+              <div class="wmb-hero-tag">Servicio profesional en tu ciudad</div>
+              <div class="wmb-hero-h1">El servicio que<br/><em>tu ciudad necesita</em></div>
+              <div class="wmb-hero-p">Más de 8 años ofreciendo calidad y atención personalizada. Reserva en minutos desde cualquier dispositivo.</div>
+              <div class="wmb-hero-btns">
+                <div class="wmb-btn-main">Reservar ahora</div>
+                <div class="wmb-btn-ghost">Ver servicios</div>
+              </div>
+              <div class="wmb-rating">
+                <span class="wmb-rating-stars">★★★★★</span>
+                <span>4.9 de 5 · 127 reseñas en Google</span>
+              </div>
+            </div>
+            <div class="wmb-hero-img"></div>
+          </div>
+          <div class="wmb-services" style="position:relative;">
+            <div class="wmb-svc-title">Nuestros servicios</div>
+            <div class="wmb-svc-grid">
+              <div class="wmb-svc-card">
+                <div class="wmb-svc-icon">✂️</div>
+                <div class="wmb-svc-name">Servicio Premium</div>
+                <div class="wmb-svc-desc">Atención personalizada para resultados perfectos</div>
+              </div>
+              <div class="wmb-svc-card featured">
+                <div class="wmb-svc-icon">⭐</div>
+                <div class="wmb-svc-name">Más Popular</div>
+                <div class="wmb-svc-desc">El favorito de nuestros clientes habituales</div>
+              </div>
+              <div class="wmb-svc-card">
+                <div class="wmb-svc-icon">🎁</div>
+                <div class="wmb-svc-name">Pack Completo</div>
+                <div class="wmb-svc-desc">Todo incluido, el mejor precio por sesión</div>
+              </div>
+            </div>
+          </div>
+          <div class="wmb-contact" style="position:relative;">
+            <div class="wmb-contact-text">¿Listo para <em>empezar?</em></div>
+            <div class="wmb-contact-btn">📞 Llamar ahora</div>
+            <div class="wmb-wa">💬</div>
+          </div>
+        </div>
+
+        <!-- FEATURE EXPLANATIONS -->
+        <div class="web-features-col">
+          <div class="web-feat-item">
+            <div class="web-feat-tag">Navbar estratégica</div>
+            <h3 class="web-feat-title">Botón de reserva siempre visible</h3>
+            <p class="web-feat-desc">El botón de acción está en la barra de navegación, visible en todo momento sin importar en qué parte de la web esté el usuario. No tienes que esperar a que bajen hasta el footer.</p>
+            <span class="web-feat-result">↑ Hasta 40% más de conversiones</span>
+          </div>
+          <div class="web-feat-item">
+            <div class="web-feat-tag">Hero section</div>
+            <h3 class="web-feat-title">Primer impacto que retiene</h3>
+            <p class="web-feat-desc">Tienes 3 segundos para convencer al visitante de que está en el sitio correcto. El título, la propuesta de valor y las reseñas de Google comunican confianza de inmediato.</p>
+            <span class="web-feat-result">↓ Reducción del rebote</span>
+          </div>
+          <div class="web-feat-item">
+            <div class="web-feat-tag">Servicios</div>
+            <h3 class="web-feat-title">Tus servicios explicados con claridad</h3>
+            <p class="web-feat-desc">Cada tarjeta de servicio destaca beneficios, no características. El cliente entiende qué gana, no qué hace el servicio técnicamente. El más popular siempre se destaca visualmente.</p>
+            <span class="web-feat-result">→ Más tiempo en página</span>
+          </div>
+          <div class="web-feat-item">
+            <div class="web-feat-tag">WhatsApp flotante</div>
+            <h3 class="web-feat-title">Contacto inmediato en cualquier punto</h3>
+            <p class="web-feat-desc">El botón de WhatsApp está fijo en la esquina inferior de TODAS las páginas. Un cliente que tiene una duda puede escribirte sin buscarlo. Las consultas llegan, no se pierden.</p>
+            <span class="web-feat-result">💬 Más consultas directas</span>
+          </div>
+          <div class="web-feat-item">
+            <div class="web-feat-tag">SEO Local</div>
+            <h3 class="web-feat-title">Tu negocio aparece cuando te buscan</h3>
+            <p class="web-feat-desc">Optimizamos cada página para que Google te encuentre cuando alguien busca tu servicio en tu ciudad. Estructura H1/H2, meta etiquetas, velocidad de carga y Google Business integrado.</p>
+            <span class="web-feat-result">🔍 Posicionamiento local</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S INCLUDED -->
+  <section class="web-includes-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="label-tag">Qué incluye</span>
+        <h2 class="section-title">Todo lo que necesita<br/><em>tu web para vender</em></h2>
+        <p class="section-sub">No entregamos solo código bonito. Entregamos una herramienta de ventas completa.</p>
+      </div>
+      <div class="web-includes-grid">
+        <div class="wi-card reveal">
+          <div class="wi-icon">🎨</div>
+          <div class="wi-title">Diseño único a medida</div>
+          <p class="wi-desc">Sin plantillas de Wix o WordPress genéricas. Diseñado desde cero para tu negocio, tu sector y tu imagen.</p>
+        </div>
+        <div class="wi-card reveal">
+          <div class="wi-icon">📱</div>
+          <div class="wi-title">Perfecta en móvil</div>
+          <p class="wi-desc">Más del 70% de las búsquedas locales son desde el teléfono. Tu web carga rápido y se ve impecable en cualquier pantalla.</p>
+        </div>
+        <div class="wi-card reveal">
+          <div class="wi-icon">🔍</div>
+          <div class="wi-title">SEO local completo</div>
+          <p class="wi-desc">Apareces en Google cuando alguien busca tu servicio en tu ciudad. Google Business Profile optimizado incluido.</p>
+        </div>
+        <div class="wi-card reveal">
+          <div class="wi-icon">📅</div>
+          <div class="wi-title">Sistema de reservas</div>
+          <p class="wi-desc">Tus clientes reservan cita directamente desde la web, sin llamarte ni mandarte un WhatsApp. Tú recibes la notificación.</p>
+        </div>
+        <div class="wi-card reveal">
+          <div class="wi-icon">💬</div>
+          <div class="wi-title">WhatsApp siempre visible</div>
+          <p class="wi-desc">Botón flotante de WhatsApp en todas las páginas. Cualquier visita puede contactarte con un solo clic.</p>
+        </div>
+        <div class="wi-card reveal">
+          <div class="wi-icon">⭐</div>
+          <div class="wi-title">Reseñas de Google integradas</div>
+          <p class="wi-desc">Tus mejores reseñas de Google aparecen automáticamente en la web, generando confianza sin que hagas nada.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT SELLS -->
+  <section class="sells-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="label-tag">Cómo vende</span>
+        <h2 class="section-title">El recorrido de<br/><em>tu próximo cliente</em></h2>
+        <p class="section-sub">Esto es lo que pasa desde que alguien te busca en Google hasta que reserva cita contigo.</p>
+      </div>
+      <div class="sells-grid">
+        <div class="sells-steps">
+          <div class="sells-step reveal">
+            <div class="sells-num">01</div>
+            <div class="sells-text">
+              <h4>Te busca en Google</h4>
+              <p>Alguien busca "peluquería cerca de mí" o "clínica dental Valencia". Tu web aparece en los primeros resultados gracias al SEO local.</p>
+            </div>
+          </div>
+          <div class="sells-step reveal">
+            <div class="sells-num">02</div>
+            <div class="sells-text">
+              <h4>Entra a tu web y confía</h4>
+              <p>Ve un diseño profesional, reseñas de Google, servicios claros y un botón de reserva visible. En 10 segundos sabe que eres la opción correcta.</p>
+            </div>
+          </div>
+          <div class="sells-step reveal">
+            <div class="sells-num">03</div>
+            <div class="sells-text">
+              <h4>Reserva sin salir de la web</h4>
+              <p>Elige fecha y hora directamente desde tu web, a las 11 de la noche si quiere. Tú recibes la confirmación y él recibe su cita confirmada.</p>
+            </div>
+          </div>
+          <div class="sells-step reveal">
+            <div class="sells-num">04</div>
+            <div class="sells-text">
+              <h4>Se convierte en cliente recurrente</h4>
+              <p>Con las automatizaciones integradas, recibe recordatorio de cita, follow-up y solicitud de reseña. Vuelve. Y recomienda.</p>
+            </div>
+          </div>
+        </div>
+        <div class="sells-right">
+          <div class="sells-stat reveal">
+            <div class="sells-stat-num">73%</div>
+            <div class="sells-stat-label"><strong>de los usuarios</strong> juzgan la credibilidad de una empresa por su diseño web</div>
+          </div>
+          <div class="sells-stat reveal">
+            <div class="sells-stat-num">3s</div>
+            <div class="sells-stat-label"><strong>tienes solo 3 segundos</strong> para retener a un visitante antes de que se vaya</div>
+          </div>
+          <div class="sells-stat reveal">
+            <div class="sells-stat-num">+38%</div>
+            <div class="sells-stat-label"><strong>más conversiones</strong> tiene una web con reservas online vs una web estática</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="padding: 0 0 100px;">
+    <div class="container">
+      <div class="demo-cta-box">
+        <h2>¿Quieres una web<br/><em>así para tu negocio?</em></h2>
+        <p>En una llamada de 20 minutos te digo exactamente cómo quedaría tu web, qué secciones necesitas y cuánto costaría. Sin compromiso.</p>
+        <div class="demo-cta-btns">
+          <a href="https://calendly.com/semartestudio" class="btn-cta-cal" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Reservar llamada gratuita
+          </a>
+          <a href="https://wa.me/34XXXXXXXXX?text=Hola%20Sergio%2C%20quiero%20una%20web%20profesional" class="btn-cta-wa" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp directo
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-bottom">
+      <div class="footer-bottom-inner" style="padding: 24px 0;">
+        <p>© 2025 Semart Studio · <a href="../index.html" style="color:var(--cyan);">Volver al inicio</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/34XXXXXXXXX?text=Hola%20Sergio%2C%20me%20interesa%20saber%20m%C3%A1s" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span class="wa-tooltip">¡Escríbeme!</span>
+  </a>
+  <script>
+    document.getElementById('hamburger').addEventListener('click', function() {
+      this.classList.toggle('open');
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+    document.querySelectorAll('.reveal').forEach(el => {
+      new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+      }, { threshold: 0.1 }).observe(el);
+    });
+  </script>
+</body>
+</html>

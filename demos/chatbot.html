@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demo Chatbot IA — Habla con el asistente | Semart Studio</title>
+  <meta name="description" content="Prueba en vivo cómo funciona un chatbot IA entrenado con la información de tu negocio. Conversa, pregunta y descubre lo que puede hacer por ti." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2304040A'/%3E%3Ctext x='16' y='23' font-family='Arial Black,sans-serif' font-weight='900' font-size='20' fill='%2300D4FF' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    .demo-page-hero { padding: 130px 0 60px; border-bottom: 1px solid var(--border); }
+    .demo-back { display: inline-flex; align-items: center; gap: 8px; color: var(--cyan); font-family: 'Space Grotesk', sans-serif; font-size: 0.85rem; font-weight: 600; margin-bottom: 32px; transition: gap 0.3s; }
+    .demo-back:hover { gap: 14px; }
+    .demo-page-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cyan); font-family: 'Space Grotesk', sans-serif; margin-bottom: 16px; }
+    .demo-page-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 7vw, 6rem); color: var(--white); line-height: 1; margin-bottom: 20px; }
+    .demo-page-title em { color: var(--cyan); font-style: normal; }
+    .demo-page-lead { font-size: 1.05rem; color: rgba(255,255,255,0.55); max-width: 640px; line-height: 1.7; }
+
+    /* ---- CHAT DEMO SECTION ---- */
+    .chat-demo-section { padding: 80px 0 100px; }
+    .chat-demo-layout { display: grid; grid-template-columns: 1fr 420px; gap: 60px; align-items: start; }
+
+    /* Chat interface */
+    .chat-interface {
+      background: var(--card);
+      border: 1px solid var(--border-h);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 16px 64px rgba(0,0,0,0.6);
+      display: flex;
+      flex-direction: column;
+      height: 600px;
+    }
+    .ci-head {
+      background: linear-gradient(135deg, #001D26, #00121A);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-shrink: 0;
+    }
+    .ci-av {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: var(--cyan);
+      color: #000;
+      font-size: 18px;
+      font-weight: 900;
+      font-family: 'Bebas Neue', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 0 3px rgba(0,212,255,0.25);
+      flex-shrink: 0;
+    }
+    .ci-meta strong {
+      display: block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.95rem;
+      color: var(--white);
+      margin-bottom: 2px;
+    }
+    .ci-meta span { font-size: 0.78rem; color: #25D366; font-family: 'Space Grotesk', sans-serif; }
+    .ci-badge {
+      margin-left: auto;
+      padding: 4px 10px;
+      background: rgba(0,212,255,0.1);
+      border: 1px solid rgba(0,212,255,0.25);
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--cyan);
+      font-family: 'Space Grotesk', sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .ci-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px 18px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      scroll-behavior: smooth;
+    }
+    .ci-body::-webkit-scrollbar { width: 3px; }
+    .ci-body::-webkit-scrollbar-thumb { background: var(--border-h); border-radius: 2px; }
+    .ci-msg { display: flex; flex-direction: column; gap: 3px; max-width: 80%; }
+    .ci-msg-text {
+      padding: 11px 16px;
+      border-radius: 14px;
+      font-size: 0.88rem;
+      line-height: 1.55;
+      font-family: 'DM Sans', sans-serif;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .ci-msg.bot { align-self: flex-start; }
+    .ci-msg.bot .ci-msg-text { background: #162030; color: rgba(255,255,255,0.85); border-radius: 4px 14px 14px 14px; border: 1px solid var(--border); }
+    .ci-msg.user { align-self: flex-end; }
+    .ci-msg.user .ci-msg-text { background: var(--cyan); color: #000; font-weight: 500; border-radius: 14px 14px 4px 14px; }
+    .ci-msg-time { font-size: 0.7rem; color: var(--dim); font-family: 'Space Grotesk', sans-serif; }
+    .ci-msg.user .ci-msg-time { align-self: flex-end; }
+    .ci-typing {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 12px 16px;
+      background: #162030;
+      border-radius: 4px 14px 14px 14px;
+      border: 1px solid var(--border);
+      align-self: flex-start;
+      width: fit-content;
+    }
+    .ci-typing span { width: 7px; height: 7px; background: var(--dim); border-radius: 50%; animation: ciDot 1.2s infinite; }
+    .ci-typing span:nth-child(2) { animation-delay: 0.2s; }
+    .ci-typing span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes ciDot { 0%,60%,100% { transform:translateY(0); opacity:0.4; } 30% { transform:translateY(-5px); opacity:1; } }
+    .ci-footer {
+      padding: 12px 16px 16px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-shrink: 0;
+      background: var(--card);
+    }
+    .ci-input {
+      flex: 1;
+      background: #0d1520;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 11px 14px;
+      color: var(--white);
+      font-size: 0.9rem;
+      font-family: 'DM Sans', sans-serif;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .ci-input::placeholder { color: var(--dim); }
+    .ci-input:focus { border-color: var(--cyan); }
+    .ci-send {
+      width: 42px; height: 42px;
+      background: var(--cyan);
+      border: none;
+      border-radius: 10px;
+      color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: var(--t);
+    }
+    .ci-send:hover { background: #00EEFF; transform: scale(1.05); }
+    .ci-suggestions {
+      padding: 8px 16px 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .ci-sug-btn {
+      padding: 5px 11px;
+      background: rgba(0,212,255,0.07);
+      border: 1px solid rgba(0,212,255,0.2);
+      border-radius: 20px;
+      color: var(--cyan);
+      font-size: 0.75rem;
+      font-weight: 600;
+      font-family: 'Space Grotesk', sans-serif;
+      cursor: pointer;
+      transition: var(--t);
+      white-space: nowrap;
+    }
+    .ci-sug-btn:hover { background: rgba(0,212,255,0.15); border-color: var(--cyan); }
+
+    /* Right side info */
+    .chat-info-col { position: sticky; top: 90px; }
+    .chat-info-col h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.8rem, 3vw, 2.8rem); color: var(--white); margin-bottom: 16px; }
+    .chat-info-col h2 em { color: var(--cyan); font-style: normal; }
+    .chat-info-col > p { font-size: 0.93rem; color: rgba(255,255,255,0.55); line-height: 1.7; margin-bottom: 24px; }
+    .chat-feat-list { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-bottom: 32px; }
+    .chat-feat-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.5; }
+    .chat-feat-list li::before { content: '→'; color: var(--cyan); flex-shrink: 0; margin-top: 1px; font-weight: 700; }
+    .chat-disclaimer {
+      padding: 14px 18px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.8rem;
+      color: var(--dim);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .chat-disclaimer strong { color: rgba(255,255,255,0.6); }
+    .chat-cta-btns { display: flex; flex-direction: column; gap: 10px; }
+
+    /* ---- HOW IT WORKS ---- */
+    .how-section { padding: 80px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: rgba(0,212,255,0.02); }
+    .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 48px; }
+    .how-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      position: relative;
+    }
+    .how-num {
+      position: absolute;
+      top: -16px; left: 24px;
+      width: 32px; height: 32px;
+      background: var(--cyan);
+      color: #000;
+      border-radius: 50%;
+      font-size: 0.85rem;
+      font-weight: 700;
+      font-family: 'Space Grotesk', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .how-card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 10px; }
+    .how-card p { font-size: 0.86rem; color: rgba(255,255,255,0.5); line-height: 1.65; margin: 0; }
+
+    /* CTA */
+    .demo-cta-box { margin: 80px 0 0; padding: 60px; background: var(--card); border: 1px solid var(--border-h); border-radius: var(--radius); text-align: center; }
+    .demo-cta-box h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 4vw, 3.5rem); color: var(--white); margin-bottom: 16px; }
+    .demo-cta-box h2 em { color: var(--cyan); font-style: normal; }
+    .demo-cta-box p { color: rgba(255,255,255,0.55); font-size: 1rem; max-width: 520px; margin: 0 auto 32px; line-height: 1.7; }
+    .demo-cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    @media (max-width: 1100px) {
+      .chat-demo-layout { grid-template-columns: 1fr; }
+      .chat-info-col { position: static; }
+      .how-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .chat-interface { height: 500px; }
+      .demo-cta-box { padding: 36px 24px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar scrolled" id="navbar">
+    <div class="container nav-inner">
+      <a href="../index.html" class="logo-link">
+        <img src="../img/logo-transparent.png" alt="Semart Studio" class="nav-logo" width="46" height="46" />
+        <span class="nav-logo-label" style="opacity:1;transform:none;">Semart <em>Studio</em></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html#servicios" class="nav-link">Servicios</a></li>
+        <li><a href="../index.html#precios" class="nav-link">Precios</a></li>
+        <li><a href="../index.html#demos" class="nav-link">Demos</a></li>
+        <li><a href="../index.html#faq" class="nav-link">FAQ</a></li>
+        <li><a href="https://calendly.com/semartestudio" class="nav-cta" target="_blank" rel="noopener noreferrer">Reservar llamada</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="demo-page-hero">
+    <div class="container">
+      <a href="../index.html#demos" class="demo-back">← Volver a demostraciones</a>
+      <p class="demo-page-label">Demo interactiva · Chatbot IA 24h</p>
+      <h1 class="demo-page-title">Habla con<br/><em>el asistente</em></h1>
+      <p class="demo-page-lead">Este es un chatbot de demostración de Semart Studio. Igual que el que instalaríamos en tu negocio — pero entrenado con TUS datos, tus servicios y tu voz. Escríbele lo que quieras.</p>
+    </div>
+  </header>
+
+  <!-- CHAT DEMO -->
+  <section class="chat-demo-section">
+    <div class="container">
+      <div class="chat-demo-layout">
+
+        <!-- CHAT INTERFACE -->
+        <div>
+          <div class="chat-interface" aria-label="Chat demo con asistente de Semart Studio">
+            <div class="ci-head">
+              <div class="ci-av">S</div>
+              <div class="ci-meta">
+                <strong>Asistente Semart Studio</strong>
+                <span>● Responde en segundos</span>
+              </div>
+              <span class="ci-badge">Demo</span>
+            </div>
+            <div class="ci-suggestions" id="ciSuggestions">
+              <button class="ci-sug-btn" onclick="sendSuggestion('¿Cuánto cuesta una web?')">¿Cuánto cuesta una web?</button>
+              <button class="ci-sug-btn" onclick="sendSuggestion('¿Cómo funciona el chatbot?')">¿Cómo funciona el chatbot?</button>
+              <button class="ci-sug-btn" onclick="sendSuggestion('¿En cuánto tiempo tendría todo listo?')">¿Cuánto tarda?</button>
+              <button class="ci-sug-btn" onclick="sendSuggestion('¿Puedo cancelar cuando quiera?')">¿Sin permanencias?</button>
+            </div>
+            <div class="ci-body" id="ciBody"></div>
+            <div class="ci-footer">
+              <input type="text" id="ciInput" class="ci-input" placeholder="Escribe tu pregunta aquí..." autocomplete="off" maxlength="300" />
+              <button class="ci-send" id="ciSend" aria-label="Enviar mensaje">
+                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- INFO COL -->
+        <div class="chat-info-col">
+          <h2>Este chatbot <em>es una muestra</em> de lo que haría el tuyo</h2>
+          <p>El chatbot real se entrena con los datos de tu negocio: tus servicios, precios, horarios, políticas y todo lo que quieras que sepa. Responde como si fueras tú — o alguien que conoce tu negocio perfectamente.</p>
+          <ul class="chat-feat-list">
+            <li>Responde preguntas frecuentes al instante, sin esperas</li>
+            <li>Agenda citas y reservas en automático</li>
+            <li>Funciona en tu web, WhatsApp e Instagram simultáneamente</li>
+            <li>Disponible 24h, 7 días a la semana — incluso en festivos</li>
+            <li>Aprende y mejora con cada conversación</li>
+            <li>Captura el nombre y teléfono de cada cliente interesado</li>
+            <li>Se configura en 1–2 semanas con tu información real</li>
+          </ul>
+          <div class="chat-disclaimer">
+            <strong>Nota:</strong> Este es un chatbot de demostración entrenado con la información de Semart Studio. El chatbot real de tu negocio se entrenaría exclusivamente con tus datos, tus servicios y tu forma de comunicarte.
+          </div>
+          <div class="chat-cta-btns">
+            <a href="https://calendly.com/semartestudio" class="btn-cta-cal" target="_blank" rel="noopener noreferrer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              Quiero este chatbot para mi negocio
+            </a>
+            <a href="https://wa.me/34XXXXXXXXX?text=Hola%20Sergio%2C%20quiero%20un%20chatbot%20para%20mi%20negocio" class="btn-cta-wa" target="_blank" rel="noopener noreferrer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Preguntarle a Sergio directamente
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="label-tag">Cómo funciona</span>
+        <h2 class="section-title">Del primer mensaje<br/><em>al cliente convertido</em></h2>
+        <p class="section-sub">El chatbot no es un bot genérico. Es un asistente entrenado específicamente con la información de tu negocio.</p>
+      </div>
+      <div class="how-grid">
+        <div class="how-card reveal">
+          <div class="how-num">01</div>
+          <h3>Entrenamiento con tus datos</h3>
+          <p>Recopilamos toda la información de tu negocio: servicios, precios, horarios, políticas, preguntas frecuentes. El chatbot aprende a responder como si fueras tú.</p>
+        </div>
+        <div class="how-card reveal">
+          <div class="how-num">02</div>
+          <h3>Integración en tus canales</h3>
+          <p>Lo instalamos en tu web, tu WhatsApp Business y tu Instagram. Cada canal recibe al cliente como si hubiera un empleado real detrás.</p>
+        </div>
+        <div class="how-card reveal">
+          <div class="how-num">03</div>
+          <h3>Tú recibes los clientes listos</h3>
+          <p>El chatbot filtra, responde y agenda. Cuando un cliente necesita hablar con una persona real, te lo transfiere con todo el contexto de la conversación.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section style="padding: 0 0 100px;">
+    <div class="container">
+      <div class="demo-cta-box">
+        <h2>¿Listo para tener<br/><em>tu propio asistente?</em></h2>
+        <p>En 1–2 semanas tienes un chatbot entrenado con los datos de tu negocio y funcionando en todos tus canales. La consulta inicial es completamente gratuita.</p>
+        <div class="demo-cta-btns">
+          <a href="https://calendly.com/semartestudio" class="btn-cta-cal" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Reservar llamada gratuita
+          </a>
+          <a href="https://wa.me/34XXXXXXXXX?text=Hola%20Sergio%2C%20quiero%20saber%20m%C3%A1s%20sobre%20el%20chatbot%20IA" class="btn-cta-wa" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WhatsApp directo
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-bottom">
+      <div class="footer-bottom-inner" style="padding: 24px 0;">
+        <p>© 2025 Semart Studio · <a href="../index.html" style="color:var(--cyan);">Volver al inicio</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/34XXXXXXXXX?text=Hola%20Sergio%2C%20me%20interesa%20saber%20m%C3%A1s" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span class="wa-tooltip">¡Escríbeme!</span>
+  </a>
+
+  <script>
+    document.getElementById('hamburger').addEventListener('click', function() {
+      this.classList.toggle('open');
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+    document.querySelectorAll('.reveal').forEach(el => {
+      new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+      }, { threshold: 0.1 }).observe(el);
+    });
+
+    /* ---- Knowledge base (same as main page widget) ---- */
+    const chatKB = [
+      { match: /^(hola|hey|buenos|buenas|ola|hi|hello|qué tal|que tal|saludos)(\s.*)?$/i, reply: `¡Hola! 👋 Soy el asistente de Semart Studio.\n\nEste chat es una demo de cómo funcionaría el chatbot en tu negocio. Puedes preguntarme sobre servicios, precios, proceso o cualquier otra cosa. ¿Qué necesitas saber?` },
+      { match: /precio|cuánto|cuanto|coste|presupuest|cuota|tarifa|pagar|cobr|vale\?|cuest/i, reply: `Nuestros precios orientativos son:\n\n💻 Web Profesional — desde 450€ (único) o 80€/mes\n⚡ Automatizaciones — desde 150€/mes\n🤖 Chatbot IA — desde 250€/mes\n🚀 Pack Completo — desde 2.500€ o 300€/mes\n\nSiempre hacemos un presupuesto adaptado a tu negocio. ¿Quieres una consulta gratuita sin compromiso?` },
+      { match: /web|pág|diseño web|website|página|pagina web/i, reply: `La Web Profesional incluye:\n\n✓ Diseño único a medida (sin plantillas)\n✓ Optimizada para aparecer en Google\n✓ Perfecta en móvil y ordenador\n✓ Botón WhatsApp siempre visible\n✓ Sistema de reservas integrado\n✓ Google Maps + reseñas integradas\n✓ Lista en 2–4 semanas\n\n¿Para qué tipo de negocio la necesitas?` },
+      { match: /automatiz|reserva|cita|recordatorio|whatsapp business|confirmaci/i, reply: `Las automatizaciones trabajan por ti 24h:\n\n⚡ Confirmación automática al instante\n⚡ Recordatorio 24h antes (reduce cancelaciones un 60%)\n⚡ Seguimiento de clientes que no confirmaron\n⚡ Solicitud de reseña automática tras la visita\n⚡ Reactivación de clientes inactivos\n\nTodo funciona solo, sin que hagas nada. ¿Quieres verlo en detalle?` },
+      { match: /chatbot|bot|asistente virtual|inteligencia artificial|ia|24h|24 hora/i, reply: `El Chatbot IA es como tener un empleado 24h:\n\n✓ Responde preguntas al instante (precios, horarios, servicios)\n✓ Agenda citas sin intervención humana\n✓ Funciona en tu web, WhatsApp e Instagram\n✓ Entrenado con los datos REALES de tu negocio\n✓ Disponible 24h, 7 días a la semana\n\nEste mismo chat que estás usando ahora es un ejemplo. Tu chatbot respondería sobre TU negocio. ¿Te interesa?` },
+      { match: /pack|completo|todo|combo|bundle/i, reply: `El Pack Completo es nuestra solución más potente:\n\n🚀 Web Profesional a medida\n🚀 Automatizaciones IA (reservas, recordatorios, reseñas)\n🚀 Chatbot IA 24h integrado\n🚀 Soporte prioritario directo con Sergio\n\nDesde 2.500€ (único) o 300€/mes. Todo integrado desde el primer día. ¿Hablamos?` },
+      { match: /tiempo|plazo|tarda|cuando|cuándo|cuanto tiempo|entrega|semana/i, reply: `Los plazos habituales:\n\n📅 Web Profesional: 2–4 semanas\n📅 Automatizaciones: 1–2 semanas\n📅 Chatbot IA: 1–2 semanas\n📅 Pack Completo: 3–5 semanas\n\nEn cada fase recibes avances para revisar y aprobar. Nada se publica sin tu visto bueno.` },
+      { match: /sergio|quién|quien|fundador|sobre|equipo|quien eres/i, reply: `Soy Sergio Martínez, fundador de Semart Studio 👋\n\nVengo del mundo de la hostelería y la logística. Conozco de primera mano lo que es un negocio local con clientes reales, urgencias y márgenes ajustados.\n\nMi enfoque: primero entiendo tu negocio, luego busco la solución que más sentido tiene para ti. Sin tecnicismos ni sorpresas.` },
+      { match: /cancel|permanencia|contrato|obligat|salir|baja|vincul/i, reply: `Sin permanencias. Sin contratos de larga duración.\n\nPuedes cancelar el mantenimiento cuando quieras. Tu web y tus automatizaciones siempre son tuyas — no dependen de nosotros para seguir funcionando.\n\nQueremos que sigas porque estás satisfecho, no por obligación.` },
+      { match: /valencia|donde|dónde|localiz|presencial|españa|ciudad|ubicaci/i, reply: `Trabajamos con negocios de toda España y también fuera — 100% online.\n\nSi estás en Valencia o alrededores, podemos colaborar presencialmente si lo prefieres.` },
+      { match: /contacto|hablar|llamada|reunión|reunion|empezar|empezamos|quiero|interesa|consulta/i, reply: `Perfecto, me alegra que te interese 😊\n\n📅 Llamada gratuita de 20 min → calendly.com/semartestudio\n💬 WhatsApp directo → botón verde en la página\n📧 Email → sergio.m.r.2000@gmail.com\n\nRespondo en menos de 24h, normalmente mucho antes.` },
+      { match: /garantía|garantia|seguro|confianza|fiable|riesgo/i, reply: `Total transparencia:\n\n✓ Presupuesto claro antes de empezar\n✓ Sin costes ocultos\n✓ Comunicación directa en todo momento\n✓ Apruebas cada fase antes de publicar\n✓ Sin permanencias obligatorias\n✓ Acompañamiento completo hasta el lanzamiento` },
+      { match: /google|seo|posicion|búsqueda|busqueda|aparecer|redes|instagram|facebook/i, reply: `El SEO local es clave para cualquier negocio local.\n\nNuestra web incluye optimización para Google: apareces cuando alguien busca tu servicio en tu ciudad. También configuramos Google Business Profile, que multiplica la visibilidad local.\n\n¿Quieres saber cómo está posicionado tu negocio ahora mismo?` },
+      { match: /sector|restaurante|peluquer|clinica|clínica|gimnasio|academia|taller|inmobi|comerc/i, reply: `Trabajamos con todo tipo de negocios locales:\n\n🍽️ Restaurantes · 💅 Peluquerías · 🏋️ Gimnasios\n🏥 Clínicas · 🏠 Inmobiliarias · 📦 Comercios\n🔧 Reformas · 📚 Academias · 🚗 Talleres\n\n¿Es para tu negocio? Cuéntame más 😊` },
+      { match: /gracias|genial|perfecto|buenísimo|interesante|bien|ok|vale|👍/i, reply: `¡Me alegra que te haya resultado útil! 😊\n\nSi tienes más preguntas o quieres dar el primer paso, escríbeme cuando quieras. Siempre es más rápido hablar 5 minutos por WhatsApp.` },
+    ];
+
+    function findReply(text) {
+      const clean = text.trim();
+      for (const entry of chatKB) {
+        if (entry.match.test(clean)) return entry.reply;
+      }
+      return `Entendido 👍\n\nPara darte una respuesta más precisa sobre tu caso concreto, lo mejor es una llamada rápida de 20 minutos.\n\nResérvala gratis en: calendly.com/semartestudio\n\nO si prefieres, escríbeme por WhatsApp (botón verde en la página) y respondo en minutos.`;
+    }
+
+    function now() {
+      const d = new Date();
+      return d.getHours().toString().padStart(2,'0') + ':' + d.getMinutes().toString().padStart(2,'0');
+    }
+
+    function addMsg(body, type, text) {
+      const msg = document.createElement('div');
+      msg.className = `ci-msg ${type}`;
+      const bubble = document.createElement('div');
+      bubble.className = 'ci-msg-text';
+      bubble.textContent = text;
+      const time = document.createElement('div');
+      time.className = 'ci-msg-time';
+      time.textContent = now();
+      msg.appendChild(bubble);
+      msg.appendChild(time);
+      msg.style.opacity = '0';
+      msg.style.transform = 'translateY(8px)';
+      body.appendChild(msg);
+      body.scrollTop = body.scrollHeight;
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        msg.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        msg.style.opacity = '1';
+        msg.style.transform = 'translateY(0)';
+      }));
+    }
+
+    function showTyping(body) {
+      const t = document.createElement('div');
+      t.className = 'ci-typing';
+      t.innerHTML = '<span></span><span></span><span></span>';
+      body.appendChild(t);
+      body.scrollTop = body.scrollHeight;
+      return t;
+    }
+
+    const ciBody = document.getElementById('ciBody');
+    const ciInput = document.getElementById('ciInput');
+    const ciSend = document.getElementById('ciSend');
+
+    /* Initial greeting */
+    setTimeout(() => {
+      addMsg(ciBody, 'bot', '¡Hola! 👋 Soy el asistente de Semart Studio.\n\nPuedes preguntarme sobre precios, servicios, cómo funciona el proceso o cualquier duda que tengas. Estoy aquí para ayudarte.\n\nPuedes usar los botones de arriba para empezar rápido, o escribir directamente.');
+    }, 500);
+
+    function handleSend(text) {
+      const msg = text || (ciInput ? ciInput.value.trim() : '');
+      if (!msg) return;
+      if (ciInput) ciInput.value = '';
+      addMsg(ciBody, 'user', msg);
+      const typing = showTyping(ciBody);
+      const delay = 800 + Math.random() * 700;
+      setTimeout(() => {
+        typing.remove();
+        addMsg(ciBody, 'bot', findReply(msg));
+      }, delay);
+    }
+
+    if (ciSend) ciSend.addEventListener('click', () => handleSend());
+    if (ciInput) {
+      ciInput.addEventListener('keydown', e => {
+        if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSend(); }
+      });
+    }
+
+    window.sendSuggestion = function(text) {
+      handleSend(text);
+    };
+  </script>
+</body>
+</html>
