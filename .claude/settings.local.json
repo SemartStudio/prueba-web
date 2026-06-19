@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(npx claude-code-templates@latest --agent development-team/frontend-developer,development-tools/code-reviewer,development-team/ui-ux-designer,ai-specialists/prompt-engineer,development-team/fullstack-developer,development-team/backend-architect,development-tools/debugger,database/database-architect,data-ai/ai-engineer --skill creative-design/frontend-design,development/code-reviewer,development/senior-backend,development/senior-architect,creative-design/ui-ux-pro-max)",
+      "PowerShell(Get-ChildItem \"C:\\\\Program Files\\\\nodejs\" -ErrorAction SilentlyContinue | Select-Object Name; Get-ChildItem \"C:\\\\Program Files \\(x86\\)\\\\nodejs\" -ErrorAction SilentlyContinue | Select-Object Name; Get-ChildItem \"$env:APPDATA\\\\npm\" -ErrorAction SilentlyContinue | Select-Object -First 5 Name)",
+      "PowerShell(\\(Get-Command git -ErrorAction SilentlyContinue\\).Source; \\(Get-Command gh -ErrorAction SilentlyContinue\\).Source)"
+    ]
+  }
+}

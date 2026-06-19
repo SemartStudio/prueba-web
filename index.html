@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO Principal -->
+  <title>Semart Studio | Diseño Web, Automatización e IA para Negocios Locales</title>
+  <meta name="description" content="Consigue más clientes con una web profesional, automatizaciones con IA y chatbot 24h. Soluciones digitales a medida para negocios locales en España. Consulta gratuita sin compromiso." />
+  <link rel="canonical" href="https://semartestudio.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://semartestudio.com/" />
+  <meta property="og:title" content="Semart Studio | Más Clientes para tu Negocio con Web, IA y Automatización" />
+  <meta property="og:description" content="Diseño web, automatizaciones y chatbot IA para negocios locales. Capta más clientes, ahorra tiempo y crece online sin tecnicismos." />
+  <meta property="og:image" content="https://semartestudio.com/img/og-preview.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Semart Studio — Soluciones digitales para negocios locales" />
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:site_name" content="Semart Studio" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Semart Studio | Más Clientes para tu Negocio" />
+  <meta name="twitter:description" content="Diseño web, automatizaciones y chatbot IA para negocios locales. Consulta gratuita sin compromiso." />
+  <meta name="twitter:image" content="https://semartestudio.com/img/og-preview.jpg" />
+
+  <!-- Favicon SVG embebido -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2304040A'/%3E%3Ctext x='16' y='23' font-family='Arial Black,sans-serif' font-weight='900' font-size='20' fill='%2300D4FF' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E" />
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Schema.org LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Semart Studio",
+    "description": "Agencia de diseño web, automatización e inteligencia artificial para negocios locales en España",
+    "url": "https://semartestudio.com",
+    "email": "sergio.m.r.2000@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Valencia",
+      "addressRegion": "Comunitat Valenciana",
+      "addressCountry": "ES"
+    },
+    "areaServed": { "@type": "Country", "name": "España" },
+    "founder": { "@type": "Person", "name": "Sergio Martínez" },
+    "priceRange": "€€",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Servicios Semart Studio",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web Profesional", "description": "Diseño web profesional para negocios locales" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Automatizaciones con IA", "description": "Automatización de procesos con inteligencia artificial" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Chatbot 24h", "description": "Asistente virtual con IA disponible 24 horas al día" } }
+      ]
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Glow decorativo -->
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+  <!-- Barra de progreso de scroll -->
+  <div class="scroll-progress" id="scrollProgress" role="progressbar" aria-hidden="true"></div>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Navegación principal">
+    <div class="container nav-inner">
+      <a href="#inicio" class="logo-link" aria-label="Semart Studio — inicio">
+        <img src="img/logo-transparent.png" alt="Semart Studio" class="nav-logo" width="58" height="58" />
+        <span class="nav-logo-label">Semart <em>Studio</em></span>
+      </a>
+      <ul class="nav-links" id="navLinks" role="list">
+        <li><a href="#servicios" class="nav-link">Servicios</a></li>
+        <li><a href="#demos" class="nav-link">Demostraciones</a></li>
+        <li><a href="#precios" class="nav-link">Precios</a></li>
+        <li><a href="#sobre-mi" class="nav-link">Sobre mí</a></li>
+        <li><a href="#faq" class="nav-link">FAQ</a></li>
+        <li><a href="#blog" class="nav-link">Blog</a></li>
+        <li>
+          <!-- REEMPLAZA con tu enlace real de Calendly -->
+          <a href="https://calendly.com/semartestudio" class="nav-cta" target="_blank" rel="noopener noreferrer">
+            Reservar llamada
+          </a>
+        </li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="inicio" aria-label="Portada">
+    <div class="hero-bg-image" aria-hidden="true">
+      <img src="img/fachada.png" alt="" class="hero-bg-img" loading="eager" />
+      <div class="hero-overlay"></div>
+    </div>
+
+    <div class="container hero-inner">
+      <div class="hero-content">
+        <div class="hero-eyebrow">
+          <span class="eyebrow-dot" aria-hidden="true"></span>
+          <span>Inteligencia Artificial · Negocios Locales</span>
+        </div>
+        <h1 class="hero-title">
+          <span class="hero-line reveal-line">TU NEGOCIO</span>
+          <span class="hero-line reveal-line accent-line">MERECE MÁS</span>
+          <span class="hero-line reveal-line">CLIENTES</span>
+        </h1>
+        <div class="hero-beam" aria-hidden="true"></div>
+        <p class="hero-sub">
+          Web profesional, automatizaciones e IA que captan y fidelizan clientes mientras tú te dedicas a tu negocio.
+        </p>
+        <div class="hero-actions">
+          <!-- REEMPLAZA con tu enlace real de Calendly -->
+          <a href="https://calendly.com/semartestudio" class="btn-hero-primary" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Consulta gratuita — reserva ya
+          </a>
+          <a href="#servicios" class="btn-hero-ghost">Ver Servicios <span class="btn-arrow" aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-stats-bar" aria-label="Estadísticas">
+      <div class="container hero-stats-inner">
+        <div class="hero-stat">
+          <span class="stat-num" data-target="80" aria-label="80">0</span><span class="stat-sym" aria-hidden="true">%</span>
+          <span class="stat-label">más visibilidad online</span>
+        </div>
+        <div class="stat-sep" aria-hidden="true"></div>
+        <div class="hero-stat">
+          <span class="stat-num" data-target="24" aria-label="24">0</span><span class="stat-sym" aria-hidden="true">h</span>
+          <span class="stat-label">atención automatizada</span>
+        </div>
+        <div class="stat-sep" aria-hidden="true"></div>
+        <div class="hero-stat">
+          <span class="stat-num" data-target="100" aria-label="100">0</span><span class="stat-sym" aria-hidden="true">%</span>
+          <span class="stat-label">personalizado a medida</span>
+        </div>
+        <div class="stat-sep" aria-hidden="true"></div>
+        <div class="hero-stat">
+          <span class="stat-num" data-target="48" aria-label="48">0</span><span class="stat-sym" aria-hidden="true">h</span>
+          <span class="stat-label">tiempo de respuesta máx.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROBLEMA / HOOK ===== -->
+  <section class="hook-section" aria-label="El problema">
+    <div class="container hook-inner">
+      <div class="hook-left">
+        <span class="label-tag">El problema</span>
+        <h2 class="section-title">¿Invisible en internet<br/>mientras tus competidores<br/><em>crecen sin parar?</em></h2>
+      </div>
+      <div class="hook-right">
+        <div class="problem-items">
+          <div class="prob-item" data-delay="0">
+            <span class="prob-x" aria-hidden="true">✕</span>
+            <p>Tus clientes te buscan en Google pero no te encuentran</p>
+          </div>
+          <div class="prob-item" data-delay="100">
+            <span class="prob-x" aria-hidden="true">✕</span>
+            <p>Respondes consultas a mano y pierdes horas cada día</p>
+          </div>
+          <div class="prob-item" data-delay="200">
+            <span class="prob-x" aria-hidden="true">✕</span>
+            <p>Los interesados se enfrían antes de que puedas contactarles</p>
+          </div>
+          <div class="prob-item" data-delay="300">
+            <span class="prob-x" aria-hidden="true">✕</span>
+            <p>Clientes que no vuelven y no sabes cómo recuperarlos</p>
+          </div>
+        </div>
+        <div class="solution-pill">
+          <span class="pill-dot" aria-hidden="true"></span>
+          Semart Studio resuelve todo esto. Sin tecnicismos. Sin complicaciones.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICIOS ===== -->
+  <section class="services-section" id="servicios" aria-label="Servicios">
+    <div class="container">
+      <div class="section-header">
+        <span class="label-tag">Servicios</span>
+        <h2 class="section-title">Todo lo que tu negocio necesita<br/><em>en un solo sitio</em></h2>
+        <p class="section-sub">Cada servicio es personalizable — pagas solo lo que necesitas, nada más.</p>
+      </div>
+
+      <div class="services-grid">
+
+        <!-- Web Profesional -->
+        <article class="svc-card" id="web-profesional">
+          <div class="svc-card-inner">
+            <div class="svc-top">
+              <div class="svc-num" aria-hidden="true">01</div>
+              <div class="svc-badge">Más popular</div>
+            </div>
+            <div class="svc-icon" aria-hidden="true">
+              <svg width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </div>
+            <h3>Web Profesional</h3>
+            <p>Aparece en Google cuando tus clientes te buscan. Un diseño que genera confianza y convierte visitas en reservas.</p>
+            <ul class="svc-list">
+              <li>Diseño único — te diferencia de la competencia</li>
+              <li>Aparece en Google cuando te buscan</li>
+              <li>Se ve perfecta en móvil y ordenador</li>
+              <li>Conectada a tus redes sociales</li>
+              <li>Los clientes reservan sin llamarte</li>
+              <li>Botón WhatsApp para contacto inmediato</li>
+            </ul>
+            <div class="svc-custom">
+              <span>Ajustable</span> — versión básica disponible si no necesitas todo
+            </div>
+            <a href="#precios" class="svc-link">Ver planes de precio <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="svc-glow" aria-hidden="true"></div>
+        </article>
+
+        <!-- Automatizaciones -->
+        <article class="svc-card svc-featured" id="automatizaciones">
+          <div class="svc-card-inner">
+            <div class="svc-top">
+              <div class="svc-num" aria-hidden="true">02</div>
+              <div class="svc-badge svc-badge-cyan">Alta demanda</div>
+            </div>
+            <div class="svc-icon" aria-hidden="true">
+              <svg width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            </div>
+            <h3>Automatizaciones IA</h3>
+            <p>Ahorra horas de trabajo repetitivo cada semana. Captación, seguimiento y fidelización funcionando solos.</p>
+            <ul class="svc-list">
+              <li>Tus clientes reciben confirmación de cita automática</li>
+              <li>Nadie se olvida de su cita — recordatorio automático</li>
+              <li>Cada lead recibe seguimiento sin que toques nada</li>
+              <li>Recupera clientes que llevan meses sin volver</li>
+              <li>Los clientes reservan solos desde su móvil</li>
+              <li>Fideliza y consigue reseñas en automático</li>
+            </ul>
+            <div class="svc-custom">
+              <span>Ajustable</span> — elige solo las automatizaciones que te interesan
+            </div>
+            <a href="#precios" class="svc-link">Ver planes de precio <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="svc-glow svc-glow-featured" aria-hidden="true"></div>
+        </article>
+
+        <!-- Chatbot -->
+        <article class="svc-card" id="chatbot">
+          <div class="svc-card-inner">
+            <div class="svc-top">
+              <div class="svc-num" aria-hidden="true">03</div>
+            </div>
+            <div class="svc-icon" aria-hidden="true">
+              <svg width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+            </div>
+            <h3>Chatbot 24h con IA</h3>
+            <p>Atiende clientes incluso mientras duermes. Responde, filtra y agenda sin que tengas que intervenir.</p>
+            <ul class="svc-list">
+              <li>Responde preguntas frecuentes al instante</li>
+              <li>Agenda citas sin que toques el teléfono</li>
+              <li>Disponible las 24h, 7 días a la semana</li>
+              <li>Entrenado con la información real de tu negocio</li>
+              <li>Integrable en tu web, WhatsApp e Instagram</li>
+              <li>Filtra clientes y captura sus datos</li>
+            </ul>
+            <div class="svc-custom">
+              <span>Ajustable</span> — se entrena con tus datos reales de negocio
+            </div>
+            <a href="#precios" class="svc-link">Ver planes de precio <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="svc-glow" aria-hidden="true"></div>
+        </article>
+
+      </div>
+
+      <!-- Pack Completo -->
+      <div class="pack-card">
+        <div class="pack-content">
+          <div class="pack-left">
+            <span class="pack-tag">Pack Completo</span>
+            <h3>Web + Automatizaciones + Chatbot</h3>
+            <p>La solución definitiva para crecer online. Todo integrado, todo funcionando desde el primer día.</p>
+            <div class="pack-feats">
+              <span><em>✓</em> Web profesional que vende</span>
+              <span><em>✓</em> Automatizaciones que ahorran tiempo</span>
+              <span><em>✓</em> Chatbot que atiende 24h</span>
+              <span><em>✓</em> Soporte prioritario directo</span>
+            </div>
+          </div>
+          <div class="pack-right">
+            <div class="pack-price-block">
+              <span class="pack-desde">Desde</span>
+              <span class="pack-price">2.500€</span>
+              <span class="pack-note">precio único</span>
+              <span class="pack-mant">+ 300–500€/mes mantenimiento</span>
+            </div>
+            <!-- REEMPLAZA con tu enlace real de Calendly -->
+            <a href="https://calendly.com/semartestudio" class="btn-primary" target="_blank" rel="noopener noreferrer">Solicitar Pack</a>
+            <p class="pack-adj">Ajustamos a tu negocio real</p>
+          </div>
+        </div>
+        <div class="pack-beam" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROCESO ===== -->
+  <section class="process-section" aria-label="Proceso de trabajo">
+    <div class="container">
+      <div class="section-header">
+        <span class="label-tag">Proceso</span>
+        <h2 class="section-title">Empezar es más<br/><em>sencillo de lo que crees</em></h2>
+      </div>
+      <div class="process-track">
+        <div class="process-line" aria-hidden="true"></div>
+        <div class="proc-step">
+          <div class="proc-dot" aria-hidden="true"><span>01</span></div>
+          <h3>Consulta gratuita</h3>
+          <p>Hablamos 20 minutos. Me cuentas tu negocio y tus objetivos. Sin compromiso.</p>
+        </div>
+        <div class="proc-step">
+          <div class="proc-dot" aria-hidden="true"><span>02</span></div>
+          <h3>Propuesta a medida</h3>
+          <p>Un plan claro con servicios y precio real. Sin sorpresas ni letra pequeña.</p>
+        </div>
+        <div class="proc-step">
+          <div class="proc-dot" aria-hidden="true"><span>03</span></div>
+          <h3>Desarrollo</h3>
+          <p>Me encargo de todo. Tú revisas y apruebas en cada paso antes de publicar.</p>
+        </div>
+        <div class="proc-step">
+          <div class="proc-dot" aria-hidden="true"><span>04</span></div>
+          <h3>Lanzamiento y soporte</h3>
+          <p>Tu proyecto activo. Con soporte continuo y mejoras incluidas en el plan.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DEMOSTRACIONES ===== -->
+  <section class="demos-section" id="demos" aria-label="Demostraciones reales">
+    <div class="container">
+      <div class="section-header">
+        <span class="label-tag">Así trabajamos</span>
+        <h2 class="section-title">Soluciones reales<br/><em>para negocios locales</em></h2>
+        <p class="section-sub">Ejemplos de las soluciones que implementamos. Son demostraciones, no proyectos de clientes reales.</p>
+      </div>
+
+      <div class="demos-grid">
+
+        <!-- Demo 1: Web Profesional -->
+        <div class="demo-card reveal">
+          <div class="demo-mockup" aria-hidden="true">
+            <div class="browser-mock">
+              <div class="browser-bar">
+                <span class="b-dot"></span><span class="b-dot"></span><span class="b-dot"></span>
+                <div class="b-url">tunegocio.com</div>
+              </div>
+              <div class="browser-content">
+                <div class="bc-hero-block">
+                  <div class="bc-hero-text">
+                    <div class="bc-title"></div>
+                    <div class="bc-sub"></div>
+                    <div class="bc-btn"></div>
+                  </div>
+                </div>
+                <div class="bc-services-row">
+                  <div class="bc-svc-item"></div>
+                  <div class="bc-svc-item"></div>
+                  <div class="bc-svc-item"></div>
+                </div>
+                <div class="bc-contact-row">
+                  <div class="bc-contact-item"></div>
+                  <div class="bc-contact-item bc-contact-wide"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="demo-info">
+            <span class="demo-tag">Web Profesional</span>
+            <h3>Tu negocio en internet,<br/>captando clientes 24h</h3>
+            <p>Diseño a medida que genera confianza y convierte visitantes en clientes. Optimizada para aparecer en Google cuando te buscan.</p>
+            <div class="demo-benefit">
+              <span class="db-icon" aria-hidden="true">↑</span>
+              <span>Más visitas, más consultas, más clientes</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Demo 2: Automatización -->
+        <div class="demo-card reveal">
+          <div class="demo-mockup demo-mockup-auto" aria-hidden="true">
+            <div class="auto-flow" id="autoFlow">
+              <div class="af-step">
+                <div class="af-icon">📅</div>
+                <div class="af-label">Nueva reserva recibida</div>
+              </div>
+              <div class="af-arrow">↓</div>
+              <div class="af-step">
+                <div class="af-icon">✅</div>
+                <div class="af-label">Confirmación automática</div>
+              </div>
+              <div class="af-arrow">↓</div>
+              <div class="af-step">
+                <div class="af-icon">🔔</div>
+                <div class="af-label">Recordatorio 24h antes</div>
+              </div>
+              <div class="af-arrow">↓</div>
+              <div class="af-step">
+                <div class="af-icon">💬</div>
+                <div class="af-label">Seguimiento posterior</div>
+              </div>
+              <div class="af-arrow">↓</div>
+              <div class="af-step">
+                <div class="af-icon">⭐</div>
+                <div class="af-label">Solicitud de reseña</div>
+              </div>
+            </div>
+          </div>
+          <div class="demo-info">
+            <span class="demo-tag">Automatización IA</span>
+            <h3>Ahorra horas cada semana<br/>sin perder ningún cliente</h3>
+            <p>Todo el proceso de reserva, confirmación y seguimiento funciona solo. Tú te dedicas a lo que sabes hacer, el sistema hace el resto.</p>
+            <div class="demo-benefit">
+              <span class="db-icon" aria-hidden="true">⏱</span>
+              <span>Hasta 10 horas semanales recuperadas</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Demo 3: Chatbot -->
+        <div class="demo-card reveal">
+          <div class="demo-mockup" aria-hidden="true">
+            <div class="chat-mock">
+              <div class="chat-header">
+                <div class="chat-avatar">S</div>
+                <div class="chat-hinfo">
+                  <span class="chat-name">Asistente Virtual</span>
+                  <span class="chat-status">● En línea ahora</span>
+                </div>
+              </div>
+              <div class="chat-body" id="chatBody"></div>
+            </div>
+          </div>
+          <div class="demo-info">
+            <span class="demo-tag">Chatbot IA 24h</span>
+            <h3>Atiende a tus clientes<br/>incluso mientras duermes</h3>
+            <p>Tu asistente virtual responde preguntas, gestiona reservas y captura clientes potenciales a cualquier hora del día.</p>
+            <div class="demo-benefit">
+              <span class="db-icon" aria-hidden="true">🤖</span>
+              <span>Disponible 24h, 7 días a la semana</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <p class="demos-note">* Demostraciones de soluciones que implementamos para negocios locales. No corresponden a proyectos reales de clientes.</p>
+    </div>
+  </section>
+
+  <!-- ===== PRECIOS ===== -->
+  <section class="pricing-section" id="precios" aria-label="Precios y planes">
+    <div class="container">
+      <div class="section-header">
+        <span class="label-tag">Precios</span>
+        <h2 class="section-title">Planes claros,<br/><em>sin letra pequeña</em></h2>
+        <p class="section-sub">Precios orientativos, siempre ajustables a tu situación real. La consulta inicial es siempre gratuita.</p>
+      </div>
+
+      <div class="price-toggle-wrap" role="group" aria-label="Tipo de precio">
+        <button class="price-tab active" id="tabOnce" aria-pressed="true">Precio único</button>
+        <button class="price-tab" id="tabMensual" aria-pressed="false">Mantenimiento / mes</button>
+      </div>
+
+      <div class="pricing-grid">
+
+        <div class="price-card reveal">
+          <div class="price-label">Esencial</div>
+          <p class="price-desc">Da tus primeros pasos online. Una web que te representa y atrae clientes.</p>
+          <div class="price-val once-price" aria-label="Precio único: desde 450 hasta 900 euros">
+            <span class="p-currency">€</span><span class="p-num">450</span><span class="p-range">– 900</span>
+          </div>
+          <div class="price-val month-price" style="display:none" aria-label="Precio mensual: desde 80 hasta 150 euros">
+            <span class="p-currency">€</span><span class="p-num">80</span><span class="p-range">– 150 /mes</span>
+          </div>
+          <ul class="price-feats">
+            <li>Web profesional que se ve bien en móvil</li>
+            <li>Hasta 5 secciones adaptadas a tu negocio</li>
+            <li>Apareces en Google (SEO local básico)</li>
+            <li>Formulario de contacto directo</li>
+            <li>Botón WhatsApp visible en todo momento</li>
+            <li class="feat-no">Automatizaciones</li>
+            <li class="feat-no">Chatbot IA</li>
+          </ul>
+          <!-- REEMPLAZA con tu enlace real de Calendly -->
+          <a href="https://calendly.com/semartestudio" class="btn-price-ghost" target="_blank" rel="noopener noreferrer">Empezar con Esencial</a>
+        </div>
+
+        <div class="price-card price-card-main reveal">
+          <div class="price-popular" aria-label="El más popular">Más popular</div>
+          <div class="price-label">Profesional</div>
+          <p class="price-desc">Automatiza, capta y fideliza más clientes con menos esfuerzo.</p>
+          <div class="price-val once-price" aria-label="Precio único: desde 1200 hasta 2500 euros">
+            <span class="p-currency">€</span><span class="p-num">1.200</span><span class="p-range">– 2.500</span>
+          </div>
+          <div class="price-val month-price" style="display:none" aria-label="Precio mensual: desde 180 hasta 300 euros">
+            <span class="p-currency">€</span><span class="p-num">180</span><span class="p-range">– 300 /mes</span>
+          </div>
+          <ul class="price-feats">
+            <li>Todo del plan Esencial</li>
+            <li>Web avanzada con más de 10 secciones</li>
+            <li>Posicionamiento Google avanzado + Google Business</li>
+            <li>Integración con tus redes sociales</li>
+            <li>Tus clientes reservan online automáticamente</li>
+            <li>Recordatorios automáticos de cita</li>
+            <li>Captación y seguimiento de nuevos contactos</li>
+          </ul>
+          <!-- REEMPLAZA con tu enlace real de Calendly -->
+          <a href="https://calendly.com/semartestudio" class="btn-price-main" target="_blank" rel="noopener noreferrer">Empezar con Profesional</a>
+        </div>
+
+        <div class="price-card reveal">
+          <div class="price-label">Elite</div>
+          <p class="price-desc">La solución completa para negocios que quieren crecer en serio.</p>
+          <div class="price-val once-price" aria-label="Precio único: desde 2500 hasta 5000 euros">
+            <span class="p-currency">€</span><span class="p-num">2.500</span><span class="p-range">– 5.000</span>
+          </div>
+          <div class="price-val month-price" style="display:none" aria-label="Precio mensual: desde 300 hasta 500 euros">
+            <span class="p-currency">€</span><span class="p-num">300</span><span class="p-range">– 500 /mes</span>
+          </div>
+          <ul class="price-feats">
+            <li>Todo del plan Profesional</li>
+            <li>Chatbot IA que atiende 24h personalizado</li>
+            <li>Integración WhatsApp + Instagram</li>
+            <li>Recupera clientes que llevan meses sin volver</li>
+            <li>App de reservas propia con tu marca</li>
+            <li>Fidelización automática con seguimientos</li>
+            <li>Soporte prioritario directo conmigo</li>
+          </ul>
+          <!-- REEMPLAZA con tu enlace real de Calendly -->
+          <a href="https://calendly.com/semartestudio" class="btn-price-ghost" target="_blank" rel="noopener noreferrer">Empezar con Elite</a>
+        </div>
+
+      </div>
+
+      <div class="price-note">
+        <p>¿No sabes qué plan te conviene? <strong>Cuéntame tu negocio y te digo exactamente qué necesitas</strong> — y lo que no necesitas.</p>
+        <!-- REEMPLAZA con tu enlace real de Calendly -->
+        <a href="https://calendly.com/semartestudio" class="btn-ghost" target="_blank" rel="noopener noreferrer">Consulta gratuita sin compromiso</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SOBRE MÍ ===== -->
+  <section class="about-section" id="sobre-mi" aria-label="Sobre mí">
+    <div class="about-photo-float" aria-hidden="true">
+      <img src="img/sergio.png" alt="Sergio Martínez — fundador de Semart Studio" class="about-img-big" loading="lazy" />
+      <div class="about-photo-glow"></div>
+    </div>
+    <div class="container about-grid">
+      <div class="about-spacer"></div>
+      <div class="about-text-col">
+        <span class="label-tag">Sobre mí</span>
+        <h2 class="section-title">Hola, soy<br/><em>Sergio Martínez</em></h2>
+        <p class="about-lead">He trabajado en hostelería y logística — sectores donde el trabajo no para, los márgenes son ajustados y cada cliente cuenta.</p>
+        <p>En esos entornos vi algo que se repite en casi todos los negocios locales: <strong>el problema no es la calidad del servicio. El problema es que los clientes potenciales no te encuentran — o te encuentran pero no se quedan.</strong></p>
+        <p>Eso me llevó a especializarme en diseño web, automatización e inteligencia artificial aplicada a negocios reales. No para hablar de tecnología, sino para que tú tengas más clientes, pierdas menos tiempo y puedas crecer sin depender de un equipo enorme.</p>
+        <p>Entiendo tu negocio porque he estado ahí. Mi enfoque: primero entender tu situación real, después buscar la solución que más sentido tiene para ti. Sin tecnicismos, sin sorpresas.</p>
+        <div class="about-chips" aria-label="Mis valores">
+          <span>Honestidad</span>
+          <span>Resultados reales</span>
+          <span>Sin tecnicismos</span>
+          <span>Trato personal</span>
+        </div>
+        <div class="about-float-tags" aria-hidden="true">
+          <div class="about-float-tag">24 años</div>
+          <div class="about-float-tag">IA & Digital</div>
+          <div class="about-float-tag">Hostelería & Logística</div>
+        </div>
+        <!-- REEMPLAZA con tu enlace real de Calendly -->
+        <a href="https://calendly.com/semartestudio" class="btn-primary" target="_blank" rel="noopener noreferrer">Hablemos directamente</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTORES ===== -->
+  <section class="sectors-section" aria-label="Sectores que atendemos">
+    <div class="container">
+      <div class="section-header">
+        <span class="label-tag">Sectores</span>
+        <h2 class="section-title">¿Tu negocio<br/><em>entra aquí?</em></h2>
+      </div>
+      <div class="sectors-grid">
+        <div class="sector-item"><span aria-hidden="true">🍽️</span><p>Restaurantes</p></div>
+        <div class="sector-item"><span aria-hidden="true">💅</span><p>Peluquerías</p></div>
+        <div class="sector-item"><span aria-hidden="true">🏋️</span><p>Gimnasios</p></div>
+        <div class="sector-item"><span aria-hidden="true">🏥</span><p>Clínicas</p></div>
+        <div class="sector-item"><span aria-hidden="true">🏠</span><p>Inmobiliarias</p></div>
+        <div class="sector-item"><span aria-hidden="true">📦</span><p>Comercios</p></div>
+        <div class="sector-item"><span aria-hidden="true">🔧</span><p>Reformas</p></div>
+        <div class="sector-item"><span aria-hidden="true">📚</span><p>Academias</p></div>
+        <div class="sector-item"><span aria-hidden="true">🚗</span><p>Talleres</p></div>
+      </div>
+      <p class="sectors-note">¿No ves el tuyo? Escríbeme — casi seguro puedo ayudarte.</p>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="faq-section" id="faq" aria-label="Preguntas frecuentes">
+    <div class="container">
+      <div class="section-header">
+        <span class="label-tag">FAQ</span>
+        <h2 class="section-title">Preguntas<br/><em>frecuentes</em></h2>
+      </div>
+      <div class="faq-cols">
+        <div class="faq-list" role="list">
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false">¿Cuánto tarda mi proyecto? <span class="faq-ic" aria-hidden="true">+</span></button>
+            <div class="faq-a"><p>La mayoría de proyectos se completan entre 2 y 4 semanas dependiendo de la complejidad. Durante todo el proceso recibirás avances periódicos y podrás revisar cada fase antes de su publicación, para asegurarnos de que el resultado final se adapta exactamente a tu negocio.</p></div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false">¿Necesito conocimientos técnicos? <span class="faq-ic" aria-hidden="true">+</span></button>
+            <div class="faq-a"><p>No. Nos encargamos de toda la parte técnica para que puedas centrarte en tu negocio. Te acompañamos en cada paso y te explicamos todo de forma sencilla para que tengas el control sin complicaciones.</p></div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false">¿Puedo empezar solo con una web básica? <span class="faq-ic" aria-hidden="true">+</span></button>
+            <div class="faq-a"><p>Sí. Muchos clientes comienzan con una web profesional y más adelante añaden automatizaciones, sistemas de reservas o asistentes IA a medida que su negocio crece. No hay ningún compromiso de escalar.</p></div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false">¿Cómo funciona el mantenimiento? <span class="faq-ic" aria-hidden="true">+</span></button>
+            <div class="faq-a"><p>El mantenimiento es opcional y puedes cancelarlo cuando quieras. Incluye soporte, actualizaciones, mejoras y asistencia para que tu web siga funcionando correctamente sin preocuparte de la parte técnica.</p></div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false">¿El chatbot funciona con WhatsApp? <span class="faq-ic" aria-hidden="true">+</span></button>
+            <div class="faq-a"><p>Sí. Podemos integrarlo con WhatsApp para responder preguntas frecuentes, captar clientes potenciales, gestionar reservas y ofrecer atención automática incluso fuera del horario comercial.</p></div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false">¿Puedo cancelar el mantenimiento cuando quiera? <span class="faq-ic" aria-hidden="true">+</span></button>
+            <div class="faq-a"><p>Sí. No trabajamos con permanencias obligatorias. Queremos que sigas con nosotros porque estás satisfecho con el servicio, no porque exista una cláusula que te obligue.</p></div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false">¿Con qué información empezamos? <span class="faq-ic" aria-hidden="true">+</span></button>
+            <div class="faq-a"><p>Solo necesitamos conocer tu negocio, tus objetivos y los servicios que ofreces. Nosotros nos encargamos de guiarte durante todo el proceso para recopilar el contenido necesario y construir una solución adaptada a tus necesidades.</p></div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false">¿Cuánto cuesta exactamente? <span class="faq-ic" aria-hidden="true">+</span></button>
+            <div class="faq-a"><p>Cada proyecto se adapta a las necesidades reales de tu negocio, por eso mostramos rangos orientativos. Tras una breve llamada te entregaremos un presupuesto claro, sin costes ocultos y sin compromiso.</p></div>
+          </div>
+
+          <div class="faq-item" role="listitem">
+            <button class="faq-q" aria-expanded="false">¿Trabajáis solo en Valencia? <span class="faq-ic" aria-hidden="true">+</span></button>
+            <div class="faq-a"><p>No. Trabajamos con negocios de toda España y fuera de forma completamente online, aunque también podemos colaborar presencialmente en Valencia y alrededores si lo prefieres.</p></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BLOG ===== -->
+  <section class="blog-section" id="blog" aria-label="Blog">
+    <div class="container">
+      <div class="section-header">
+        <span class="label-tag">Blog Gratis</span>
+        <h2 class="section-title">IA y negocios locales:<br/><em>lo que necesitas saber</em></h2>
+      </div>
+      <div class="blog-grid">
+
+        <article class="blog-card reveal">
+          <span class="blog-cat">Estrategia</span>
+          <h3>Cómo conseguir más clientes para tu negocio local</h3>
+          <p>Las estrategias digitales que realmente funcionan para negocios locales sin necesitar grandes presupuestos ni conocimientos técnicos.</p>
+          <div class="blog-foot">
+            <span>6 min</span>
+            <a href="blog/clientes-negocio-local.html">Leer artículo →</a>
+          </div>
+        </article>
+
+        <article class="blog-card reveal">
+          <span class="blog-cat">WhatsApp</span>
+          <h3>Por qué WhatsApp vende más de lo que imaginas</h3>
+          <p>Cómo los negocios locales están usando WhatsApp Business con automatizaciones para cerrar más ventas con menos esfuerzo.</p>
+          <div class="blog-foot">
+            <span>5 min</span>
+            <a href="blog/whatsapp-ventas.html">Leer artículo →</a>
+          </div>
+        </article>
+
+        <article class="blog-card reveal">
+          <span class="blog-cat">Chatbots</span>
+          <h3>Cómo un chatbot IA puede atender clientes 24 horas</h3>
+          <p>Un empleado que no se cansa, no se va de vacaciones y atiende a cien clientes a la vez. Te explico cómo funciona y qué impacto tiene.</p>
+          <div class="blog-foot">
+            <span>5 min</span>
+            <a href="blog/chatbot-ia-24h.html">Leer artículo →</a>
+          </div>
+        </article>
+
+      </div>
+      <div class="blog-cta-row">
+        <p>¿Quieres recibir más contenido como este?</p>
+        <a href="mailto:sergio.m.r.2000@gmail.com?subject=Suscripci%C3%B3n%20blog%20Semart%20Studio" class="btn-ghost">Suscribirme gratis</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GARANTÍAS ===== -->
+  <section class="garantias-section" id="garantias" aria-label="Nuestras garantías">
+    <div class="container">
+      <div class="section-header section-header-center">
+        <span class="label-tag">Garantías</span>
+        <h2 class="section-title">Trabajamos contigo<br/><em>con total transparencia</em></h2>
+        <p class="section-sub">Sin compromisos forzados. Sin sorpresas. Así de sencillo.</p>
+      </div>
+      <div class="garantias-grid">
+        <div class="garantia-item reveal">
+          <div class="garantia-check" aria-hidden="true">✓</div>
+          <div class="garantia-text">
+            <strong>Presupuesto claro desde el principio</strong>
+            <p>Sabrás exactamente cuánto vas a pagar antes de empezar. Sin cifras que cambian a mitad del proyecto.</p>
+          </div>
+        </div>
+        <div class="garantia-item reveal">
+          <div class="garantia-check" aria-hidden="true">✓</div>
+          <div class="garantia-text">
+            <strong>Sin costes ocultos</strong>
+            <p>Lo que acordamos es lo que pagas. Nada más. Sin tarifas extra por cambios razonables.</p>
+          </div>
+        </div>
+        <div class="garantia-item reveal">
+          <div class="garantia-check" aria-hidden="true">✓</div>
+          <div class="garantia-text">
+            <strong>Soluciones personalizadas</strong>
+            <p>Adaptadas a tu negocio real, no plantillas genéricas que sirven para cualquiera y no destacan.</p>
+          </div>
+        </div>
+        <div class="garantia-item reveal">
+          <div class="garantia-check" aria-hidden="true">✓</div>
+          <div class="garantia-text">
+            <strong>Comunicación directa</strong>
+            <p>Hablas conmigo directamente en todo momento. Sin intermediarios, sin tiempos de espera largos.</p>
+          </div>
+        </div>
+        <div class="garantia-item reveal">
+          <div class="garantia-check" aria-hidden="true">✓</div>
+          <div class="garantia-text">
+            <strong>Acompañamiento completo</strong>
+            <p>Estoy contigo en cada fase — diseño, desarrollo, lanzamiento y más allá. No desaparezco al publicar.</p>
+          </div>
+        </div>
+        <div class="garantia-item reveal">
+          <div class="garantia-check" aria-hidden="true">✓</div>
+          <div class="garantia-text">
+            <strong>Sin permanencias obligatorias</strong>
+            <p>Sin contratos de larga duración. Cancelas cuando quieras. Quiero que sigas porque estás satisfecho.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA FINAL ===== -->
+  <section class="cta-final" id="contacto" aria-label="Contacto y llamada a la acción">
+    <div class="cta-bg-img" aria-hidden="true">
+      <img src="img/sergio-fachada.png" alt="" loading="lazy" />
+      <div class="cta-overlay"></div>
+    </div>
+    <div class="container cta-inner">
+      <span class="label-tag tag-light">¿Listo para crecer?</span>
+      <h2 class="cta-title">TU PRÓXIMO CLIENTE<br/><span>TE BUSCA ONLINE</span></h2>
+      <div class="cta-beam" aria-hidden="true"></div>
+      <p>Una conversación de 20 minutos puede cambiar el rumbo de tu negocio.<br/>Sin compromiso. Sin tecnicismos. Solo resultados.</p>
+      <div class="cta-btns">
+        <!-- REEMPLAZA con tu enlace real de Calendly -->
+        <a href="https://calendly.com/semartestudio" class="btn-cta-cal" target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Reservar llamada gratuita
+        </a>
+        <a href="https://wa.me/34XXXXXXXXX?text=Hola%20Sergio%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20Semart%20Studio" class="btn-cta-wa" target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          WhatsApp
+        </a>
+        <a href="mailto:sergio.m.r.2000@gmail.com?subject=Consulta%20Semart%20Studio" class="btn-cta-email">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          Email
+        </a>
+      </div>
+      <p class="cta-reply">Respondo en menos de 24h — normalmente antes</p>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="img/LOGO sin círculo.png" alt="Semart Studio" class="footer-logo" width="auto" height="50" loading="lazy" />
+        <p>Soluciones digitales con IA para negocios locales que quieren crecer online sin complicaciones.</p>
+        <div class="footer-social" aria-label="Redes sociales">
+          <!-- REEMPLAZA # por tu URL real de Instagram -->
+          <a href="#" aria-label="Instagram de Semart Studio" class="soc-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://wa.me/34XXXXXXXXX" aria-label="WhatsApp de Semart Studio" class="soc-link" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Servicios</h4>
+        <a href="#web-profesional">Web Profesional</a>
+        <a href="#automatizaciones">Automatizaciones</a>
+        <a href="#chatbot">Chatbot 24h</a>
+        <a href="#precios">Pack Completo</a>
+      </div>
+      <div class="footer-col">
+        <h4>Info</h4>
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#demos">Demostraciones</a>
+        <a href="#blog">Blog</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <!-- REEMPLAZA con tu enlace real de Calendly -->
+        <a href="https://calendly.com/semartestudio" target="_blank" rel="noopener noreferrer">Reservar llamada gratuita</a>
+        <a href="https://wa.me/34XXXXXXXXX" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <a href="mailto:sergio.m.r.2000@gmail.com">sergio.m.r.2000@gmail.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>© 2025 Semart Studio · Todos los derechos reservados</p>
+        <div class="footer-legal">
+          <a href="#">Privacidad</a>
+          <a href="#">Aviso legal</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp flotante -->
+  <a href="https://wa.me/34XXXXXXXXX?text=Hola%20Sergio%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20Semart%20Studio" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <span class="wa-tooltip">¡Escríbeme!</span>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>
