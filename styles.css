@@ -1554,26 +1554,77 @@ a { text-decoration: none; color: inherit; }
     align-items: center;
     justify-content: center;
     gap: 28px;
-    z-index: 999;
+    z-index: 1010; /* above floating buttons (1000) */
     list-style: none;
   }
   .nav-links.open { display: flex; }
   .nav-links .nav-link { font-size: 1.3rem; }
   .nav-links .nav-cta { font-size: 1rem; padding: 14px 32px; }
-  .hamburger { display: flex; z-index: 1000; position: relative; }
+  /* Hamburger must be above the open menu overlay */
+  .hamburger { display: flex; z-index: 1011; position: relative; }
   .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
   .hamburger.open span:nth-child(2) { opacity: 0; }
   .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
   .hero-stats-inner { flex-wrap: wrap; justify-content: center; gap: 16px; }
   .stat-sep { display: none; }
   .hero-stat { min-width: 120px; }
-  .blog-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; gap: 32px; }
   .footer-bottom-inner { flex-direction: column; text-align: center; }
   .sectors-grid { grid-template-columns: repeat(3, 1fr); }
   .hero-inner { padding: 120px 20px 48px; }
-  .garantias-grid { grid-template-columns: 1fr; }
   .cta-btns { flex-direction: column; align-items: center; }
+  /* Fachada hero: less zoom, show more of the building */
+  .hero-bg-img { transform: scale(1.0); object-position: center top; }
+  /* Fachada CTA end: show more */
+  .cta-bg-img img { object-position: center top; }
+  /* Garantías: 2 columns on mobile so 6 items = 3 rows (much shorter scroll) */
+  .garantias-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px; }
+  .garantia-item { padding: 14px 12px; gap: 10px; }
+  .garantia-check { width: 30px; height: 30px; min-width: 30px; font-size: 0.85rem; }
+  .garantia-text strong { font-size: 0.82rem; }
+  .garantia-text p { font-size: 0.75rem; }
+  /* Blog carousel */
+  .blog-carousel {
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    gap: 14px !important;
+    padding: 4px 20px 20px !important;
+    margin: 0 -20px !important;
+    max-width: none !important;
+    grid-template-columns: unset !important;
+    scrollbar-width: none;
+  }
+  .blog-carousel::-webkit-scrollbar { display: none; }
+  .blog-carousel .blog-card {
+    flex: 0 0 82vw;
+    min-width: 82vw;
+    scroll-snap-align: start;
+  }
+  /* Demos carousel */
+  .demos-carousel {
+    display: flex !important;
+    flex-direction: row !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    gap: 14px !important;
+    padding: 4px 20px 20px !important;
+    margin: 0 -20px !important;
+    max-width: none !important;
+    grid-template-columns: unset !important;
+    scrollbar-width: none;
+  }
+  .demos-carousel::-webkit-scrollbar { display: none; }
+  .demos-carousel .demo-card {
+    flex: 0 0 88vw;
+    min-width: 88vw;
+    scroll-snap-align: start;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1587,33 +1638,37 @@ a { text-decoration: none; color: inherit; }
   .demos-grid { max-width: 100%; }
   .garantias-grid { grid-template-columns: 1fr; }
   .pack-card { padding: 28px 20px; }
-  /* Fachada images less zoomed on small screens */
-  .hero-bg-img { object-position: 30% center; }
-  .cta-bg-img img { object-position: center center; }
 }
 
 /* ===== SWIPE HINT ===== */
 .swipe-hint-wrap {
   display: none;
   justify-content: center;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 .swipe-hint {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-size: 0.75rem;
+  gap: 10px;
+  font-size: 0.78rem;
   font-weight: 600;
-  color: var(--dim);
+  color: rgba(0,212,255,0.7);
   font-family: 'Space Grotesk', sans-serif;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  animation: swipeAnim 1.8s ease-in-out infinite;
+  background: rgba(0,212,255,0.07);
+  border: 1px solid rgba(0,212,255,0.2);
+  border-radius: 20px;
+  padding: 8px 18px;
 }
-.swipe-hint svg { opacity: 0.6; flex-shrink: 0; }
-@keyframes swipeAnim {
-  0%,100% { opacity: 0.5; transform: translateX(0); }
-  50% { opacity: 1; transform: translateX(3px); }
+.swipe-arrows {
+  font-size: 1rem;
+  animation: swipeArrow 1.4s ease-in-out infinite;
+  display: inline-block;
+}
+@keyframes swipeArrow {
+  0%,100% { transform: translateX(0); opacity: 0.6; }
+  50% { transform: translateX(5px); opacity: 1; }
 }
 
 /* ===== MOBILE HORIZONTAL CAROUSEL (services + pricing) ===== */
