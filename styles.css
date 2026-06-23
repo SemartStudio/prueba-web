@@ -162,10 +162,12 @@ a { text-decoration: none; color: inherit; }
   padding: 12px 0;
 }
 /* When mobile menu is open, remove backdrop-filter so position:fixed children
-   fix to the viewport (not the navbar stacking context). */
+   fix to the viewport (not the navbar stacking context). Transition must be
+   disabled so the stacking context is destroyed instantly, not after 300ms. */
 .navbar.menu-open {
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
+  transition: none !important;
 }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; }
 .logo-link {
@@ -1585,11 +1587,11 @@ a { text-decoration: none; color: inherit; }
   /* Fachada CTA end: show more */
   .cta-bg-img img { object-position: center top; }
   /* Garantías: 2 columns on mobile so 6 items = 3 rows (much shorter scroll) */
-  .garantias-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px; }
-  .garantia-item { padding: 14px 12px; gap: 10px; }
+  .garantias-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 16px; }
+  .garantia-item { padding: 16px 14px; gap: 10px; border-radius: 10px; }
   .garantia-check { width: 30px; height: 30px; min-width: 30px; font-size: 0.85rem; }
-  .garantia-text strong { font-size: 0.82rem; }
-  .garantia-text p { font-size: 0.75rem; }
+  .garantia-text strong { font-size: 0.83rem; }
+  .garantia-text p { font-size: 0.76rem; }
   /* Blog carousel */
   .blog-carousel {
     display: flex !important;
