@@ -161,6 +161,12 @@ a { text-decoration: none; color: inherit; }
   border-bottom: 1px solid var(--border);
   padding: 12px 0;
 }
+/* When mobile menu is open, remove backdrop-filter so position:fixed children
+   fix to the viewport (not the navbar stacking context). */
+.navbar.menu-open {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
 .nav-inner { display: flex; align-items: center; justify-content: space-between; }
 .logo-link {
   display: flex;
@@ -723,7 +729,8 @@ a { text-decoration: none; color: inherit; }
 /* Browser mockup */
 .demo-mockup {
   background: var(--dark);
-  min-height: 260px;
+  height: 340px;
+  min-height: 340px;
   position: relative;
   overflow: hidden;
   display: flex;

@@ -41,12 +41,17 @@ const hamburger = document.getElementById('hamburger');
 const navLinks  = document.getElementById('navLinks');
 
 if (hamburger && navLinks) {
+  const navbar = document.getElementById('navbar');
   hamburger.addEventListener('click', () => {
     const isOpen = navLinks.classList.contains('open');
     hamburger.classList.toggle('open');
     navLinks.classList.toggle('open');
     hamburger.setAttribute('aria-expanded', String(!isOpen));
     document.body.style.overflow = !isOpen ? 'hidden' : '';
+    /* Remove backdrop-filter from navbar when menu opens: backdrop-filter creates a
+       stacking context that traps position:fixed children to the navbar rect instead
+       of the viewport, so the overlay only covers the top bar instead of full screen. */
+    if (navbar) navbar.classList.toggle('menu-open', !isOpen);
   });
   navLinks.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => {
@@ -54,6 +59,7 @@ if (hamburger && navLinks) {
       navLinks.classList.remove('open');
       hamburger.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
+      if (navbar) navbar.classList.remove('menu-open');
     });
   });
 }
