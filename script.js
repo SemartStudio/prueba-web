@@ -440,7 +440,7 @@ const botKB = [
   /* ---- CONTACTO ---- */
   {
     match: /contacto|llamada|reunión|reunion|empezar|hablar|consulta/i,
-    reply: `Perfecto, lo más rápido es la llamada gratuita — 20 minutos y te digo exactamente qué tiene más sentido para tu caso.\n\nResérvala en: calendly.com/semartestudio\n\nO si prefieres ir más directo, el WhatsApp (botón verde en la página) suele ser lo más rápido. Respondo el mismo día.`
+    reply: `Perfecto, lo más rápido es la llamada gratuita — 20 minutos y te digo exactamente qué tiene más sentido para tu caso.\n\nResérvala en: calendly.com/semartstudio/diagnostico-negocio\n\nO si prefieres ir más directo, el WhatsApp (botón verde en la página) suele ser lo más rápido. Respondo el mismo día.`
   },
 
   /* ---- GARANTÍAS ---- */
@@ -461,7 +461,7 @@ function botFindReply(text) {
   for (const entry of botKB) {
     if (entry.match.test(clean)) return entry.reply;
   }
-  return `Entendido 👍 Para darte una respuesta más precisa, lo mejor es una llamada rápida de 20 minutos.\n\nPuedes reservarla gratis en: calendly.com/semartestudio\n\nO si prefieres, escríbeme directamente por WhatsApp (botón verde en la página) y respondo enseguida.`;
+  return `Entendido 👍 Para darte una respuesta más precisa, lo mejor es una llamada rápida de 20 minutos.\n\nPuedes reservarla gratis en: calendly.com/semartstudio/diagnostico-negocio\n\nO si prefieres, escríbeme directamente por WhatsApp (botón verde en la página) y respondo enseguida.`;
 }
 
 function botAddMsg(container, type, text) {
